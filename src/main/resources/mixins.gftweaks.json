@@ -1,0 +1,10 @@
+{
+  "package": "pismeno.gftweaks.mixins",
+  "refmap": "mixins.gftweaks.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": ["MixinSchematicRocketT1"],
+  "client": [],
+  "server": []
+}

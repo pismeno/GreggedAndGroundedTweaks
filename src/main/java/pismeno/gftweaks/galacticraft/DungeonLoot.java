@@ -8,9 +8,9 @@ import micdoodle8.mods.galacticraft.planets.venus.VenusItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import pismeno.gftweaks.GfTweaks;
+import pismeno.gftweaks.common.GFTItems;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +44,18 @@ public class DungeonLoot {
             removeFromDungeonLoot(item, lootMap);
         }
 
-        //GalacticraftRegistry.addDungeonLoot(1, new ItemStack(GCItems.steelAxe));
+        GalacticraftRegistry.addDungeonLoot(1, new ItemStack(GFTItems.PLAN_TIER2));
+        GalacticraftRegistry.addDungeonLoot(2, new ItemStack(GFTItems.PLAN_TIER3));
+        GalacticraftRegistry.addDungeonLoot(2, new ItemStack(GFTItems.PLAN_ROVER_MARS));
+        GalacticraftRegistry.addDungeonLoot(3, new ItemStack(GFTItems.PLAN_ROVER_VENUS));
+        GalacticraftRegistry.addDungeonLoot(4, new ItemStack(GFTItems.PLAN_TIER4));
+        GalacticraftRegistry.addDungeonLoot(5, new ItemStack(GFTItems.PLAN_TIER5));
+        GalacticraftRegistry.addDungeonLoot(6, new ItemStack(GFTItems.PLAN_TIER6));
+        GalacticraftRegistry.addDungeonLoot(7, new ItemStack(GFTItems.PLAN_TIER7));
+        GalacticraftRegistry.addDungeonLoot(8, new ItemStack(GFTItems.PLAN_TIER8));
+        GalacticraftRegistry.addDungeonLoot(9, new ItemStack(GFTItems.PLAN_TIER9));
+        GalacticraftRegistry.addDungeonLoot(10, new ItemStack(GFTItems.PLAN_TIER10));
+        GalacticraftRegistry.addDungeonLoot(10, new ItemStack(GFTItems.PLAN_TIER10_ELECTRIC));
 
             for (Map.Entry<Integer, List<ItemStack>> entry : lootMap.entrySet()) {
                 Integer dungeonId = entry.getKey();
@@ -70,4 +81,6 @@ public class DungeonLoot {
             lootList.removeIf(stack -> stack.getItem() == target);
         }
     }
+
+    private DungeonLoot() {}
 }

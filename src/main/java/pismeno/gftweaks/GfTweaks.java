@@ -1,8 +1,11 @@
 package pismeno.gftweaks;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +16,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pismeno.gftweaks.common.GFTItems;
@@ -60,12 +65,5 @@ public class GfTweaks {
     @EventHandler
     public void postInitSafe(FMLPostInitializationEvent event) throws NoSuchFieldException, IllegalAccessException {
         DungeonLoot.init();
-    }
-
-    @SubscribeEvent
-    public static void registerItemsEvent(RegistryEvent.Register<Item> event) {
-        for (Item item : GFTItems.ITEMS) {
-            event.getRegistry().register(item);
-        }
     }
 }

@@ -12,6 +12,12 @@ public class MaterialModifications {
         Ardite.setProperty(PropertyKey.BLAST, new BlastProperty(1780));
         Flint.setMaterialRGB(0x565656);
 
+        Diamond.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
+        Amethyst.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
+        Lapotron.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
+        Emerald.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
+
+
         GfTweaks.LOGGER.info("Material modifications initialized");
     }
 

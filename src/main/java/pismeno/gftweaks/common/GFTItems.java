@@ -30,6 +30,7 @@ public class GFTItems {
     public static Item PLAN_ROVER_VENUS;
 
     public static Item COKE_OVEN_CLAY;
+    public static Item MUDDY_DUST;
     public static Item FILTERED_GROUT;
     public static Item COMPRESSED_GROUT;
     public static Item COMPRESSED_CLAY;
@@ -55,6 +56,7 @@ public class GFTItems {
         PLAN_ROVER_VENUS = new ItemPlan("rover_venus");
 
         COKE_OVEN_CLAY = new ItemGeneric("coke_oven_clay");
+        MUDDY_DUST = new ItemGeneric("muddy_dust");
         FILTERED_GROUT = new ItemGeneric("filtered_grout");
         COMPRESSED_GROUT = new ItemGeneric("compressed_grout");
         COMPRESSED_CLAY = new ItemGeneric("compressed_clay");

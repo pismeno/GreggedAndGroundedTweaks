@@ -2,6 +2,9 @@ package pismeno.gftweaks;
 
 
 import gregtech.api.unification.material.event.MaterialEvent;
+import gregtech.api.unification.material.event.PostMaterialEvent;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.MetaItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -11,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import pismeno.gftweaks.common.GFTItems;
+import pismeno.gftweaks.gregtech.GFTOrePrefix;
 import pismeno.gftweaks.gregtech.MachineRecipes;
 import pismeno.gftweaks.gregtech.MaterialModifications;
 import pismeno.gftweaks.tconstruct.TcMaterials;
@@ -27,6 +31,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
+        MachineRecipes.postInit();
     }
 
     @SubscribeEvent
@@ -42,5 +47,10 @@ public class CommonProxy {
     @SubscribeEvent
     public static void onMaterialRegistration(MaterialEvent event) {
         MaterialModifications.init();
+    }
+
+    @SubscribeEvent
+    public static void onPostMaterialRegistration(PostMaterialEvent event) {
+        MetaItems.addOrePrefix(GFTOrePrefix.chipEngraved);
     }
 }

@@ -1,5 +1,6 @@
 gftweaks.press_shift.tooltip=§oPRESS SHIFT
 material.hemp.name=Hemp
+item.material.oreprefix.chipEngraved=Engraved %s Chip
 item.gftweaks.plan_tier2.name=§6Tier 2 Rocket Plan
 item.gftweaks.plan_tier2.tooltip=A rough plan for Tier 2 Rocket.
 item.gftweaks.plan_tier3.name=§6Tier 3 Rocket Plan
@@ -28,6 +29,7 @@ item.gftweaks.plan.extended_tooltip=§oThis was probably made by the Aliens!
 item.gftweaks.gravel_strainer.name=Gravel Strainer
 item.gftweaks.corn_flour.name=Corn Flour
 item.gftweaks.coke_oven_clay.name=Coke Clay
+item.gftweaks.muddy_dust.name=Muddy Dust
 item.gftweaks.filtered_grout.name=Filtered Grout
 item.gftweaks.compressed_grout.name=Compressed Grout
 item.gftweaks.compressed_clay.name=Compressed Clay

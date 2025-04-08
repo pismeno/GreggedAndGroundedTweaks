@@ -1,28 +1,21 @@
 package pismeno.gftweaks.gregtech;
 
-import com.mjr.extraplanets.items.ExtraPlanets_Items;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
-import micdoodle8.mods.galacticraft.core.GCItems;
-import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
-import micdoodle8.mods.galacticraft.planets.venus.VenusItems;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import pismeno.gftweaks.common.GFTItems;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static gregtech.api.GTValues.*;
 
 public class MachineRecipes {
     public static void init() {
         addGeneric();
+    }
+
+    public static void postInit() {
         removeWoodPulpRecyclings();
     }
 
@@ -57,22 +50,26 @@ public class MachineRecipes {
     }
 
     private static void removeWoodPulpRecyclings() {
-        List<ItemStack> woodDusts = Arrays.asList(
-                OreDictUnifier.get(OrePrefix.dust, Materials.Wood),
-                OreDictUnifier.get(OrePrefix.dustSmall, Materials.Wood),
-                OreDictUnifier.get(OrePrefix.dustTiny, Materials.Wood),
-                OreDictUnifier.get(OrePrefix.dust, Materials.TreatedWood),
-                OreDictUnifier.get(OrePrefix.dustSmall, Materials.TreatedWood),
-                OreDictUnifier.get(OrePrefix.dustTiny, Materials.TreatedWood)
-        );
-
-
         for (Recipe recipe : RecipeMaps.MACERATOR_RECIPES.getRecipeList()) {
             for (ItemStack itemStack : recipe.getAllItemOutputs()) {
-                for (ItemStack item : woodDusts){
-                    if (itemStack.isItemEqual(item)) {
-                        RecipeMaps.MACERATOR_RECIPES.removeRecipe(recipe);
-                    }
+                if (itemStack.getItemDamage() == 1617 || itemStack.getItemDamage() == 1648) {
+                    RecipeMaps.MACERATOR_RECIPES.removeRecipe(recipe);
+                }
+            }
+        }
+
+        for (Recipe recipe : RecipeMaps.CUTTER_RECIPES.getRecipeList()) {
+            for (ItemStack itemStack : recipe.getAllItemOutputs()) {
+                if (itemStack.getItemDamage() == 1617 || itemStack.getItemDamage() == 1648) {
+                    RecipeMaps.CUTTER_RECIPES.removeRecipe(recipe);
+                }
+            }
+        }
+
+        for (Recipe recipe : RecipeMaps.LATHE_RECIPES.getRecipeList()) {
+            for (ItemStack itemStack : recipe.getAllItemOutputs()) {
+                if (itemStack.getItemDamage() == 1617 || itemStack.getItemDamage() == 1648) {
+                    RecipeMaps.LATHE_RECIPES.removeRecipe(recipe);
                 }
             }
         }

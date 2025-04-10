@@ -5,10 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import pismeno.gftweaks.GfTweaks;
-import pismeno.gftweaks.common.items.ItemGeneric;
-import pismeno.gftweaks.common.items.ItemGravelStrainer;
-import pismeno.gftweaks.common.items.ItemHeavyDuty;
-import pismeno.gftweaks.common.items.ItemPlan;
+import pismeno.gftweaks.common.items.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +38,9 @@ public class GFTItems {
 
     public static Item GRAVEL_STRAINER;
 
+    public static Item TINY_PLASTIC_CONTAINER;
+    public static Item NETHER_FLAME_SAUCE;
+
     public static void init() {
         PLAN_TIER2 = new ItemPlan("tier2");
         PLAN_TIER3 = new ItemPlan("tier3");
@@ -66,6 +66,9 @@ public class GFTItems {
         COMPRESSED_HEAVY_DUTY_COMPOSITE = new ItemHeavyDuty("compressed_heavy_duty_composite");
 
         GRAVEL_STRAINER = new ItemGravelStrainer("gravel_strainer");
+
+        TINY_PLASTIC_CONTAINER = new ItemGeneric("tiny_plastic_container");
+        NETHER_FLAME_SAUCE = new ItemFoodGeneric("nether_flame_sauce", 3, 16.0F);
     }
 
     public static void registerModels() {

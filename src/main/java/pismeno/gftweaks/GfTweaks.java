@@ -35,7 +35,8 @@ import pismeno.gftweaks.tconstruct.TcMaterials;
                         "required-after:galacticraftcore;" +
                         "required-after:galacticraftplanets;" +
                         "required-after:extraplanets;" +
-                        "required-after:betterwithmods"
+                        "required-after:betterwithmods;" +
+                        "required-after:actuallyadditions"
 )
 public class GfTweaks {
 

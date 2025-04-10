@@ -1,6 +1,8 @@
 gftweaks.press_shift.tooltip=§oPRESS SHIFT
 material.hemp.name=Hemp
 item.material.oreprefix.chipEngraved=Engraved %s Chip
+item.material.oreprefix.chipRaw=Raw %s Chip
+
 item.gftweaks.plan_tier2.name=§6Tier 2 Rocket Plan
 item.gftweaks.plan_tier2.tooltip=A rough plan for Tier 2 Rocket.
 item.gftweaks.plan_tier3.name=§6Tier 3 Rocket Plan
@@ -36,3 +38,32 @@ item.gftweaks.compressed_clay.name=Compressed Clay
 item.gftweaks.blaze_chunk.name=Blaze Chunk
 item.gftweaks.heavy_duty_composite.name=Heavy Duty Composite
 item.gftweaks.compressed_heavy_duty_composite.name=Compressed Heavy Duty Composite
+item.gftweaks.tiny_plastic_container.name=Tiny Plastic Container
+item.gftweaks.nether_flame_sauce.name=Nether Flame Sauce
+
+gftweaks.material.ardite=Ardite
+gftweaks.material.manyullyn=Manyullyn
+gftweaks.material.wyrmwood=Wyrmwood
+gftweaks.material.corn_flour=Corn Flour
+gftweaks.material.enori=Enori Crystal
+gftweaks.material.diamatine=Diamatine Crystal
+gftweaks.material.emeradic=Emeradic Crystal
+gftweaks.material.palis=Palis Crystal
+gftweaks.material.restonia=Restonia Crystal
+gftweaks.material.void=Void Crystal
+gftweaks.material.inconel=Inconel
+gftweaks.material.quartz_black=Black Quartz
+
+gftweaks.machine.steam_saw_bronze.name=Steam Saw
+gftweaks.machine.steam_saw_steel.name=High Pressure Steam Saw
+gftweaks.machine.saw.lv.name=Basic Saw
+gftweaks.machine.saw.mv.name=Advanced Saw
+gftweaks.machine.saw.hv.name=Advanced Saw II
+gftweaks.machine.saw.ev.name=Advanced Saw III
+gftweaks.machine.saw.iv.name=Elite Saw
+gftweaks.machine.saw.luv.name=Elite Saw II
+gftweaks.machine.saw.zpm.name=Elite Saw III
+gftweaks.machine.saw.uv.name=Ultimate Saw
+gftweaks.machine.laser_fabricator.name=Laser Fabricator
+recipemap.saw.name=Saw
+recipemap.laser_fabricator.name=Laser Fabricator

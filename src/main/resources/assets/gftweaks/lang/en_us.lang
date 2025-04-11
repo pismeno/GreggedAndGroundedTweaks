@@ -2,6 +2,7 @@ gftweaks.press_shift.tooltip=§oPRESS SHIFT
 material.hemp.name=Hemp
 item.material.oreprefix.chipEngraved=Engraved %s Chip
 item.material.oreprefix.chipRaw=Raw %s Chip
+item.material.oreprefix.cuttingBlade=%s Cutting Blade
 
 item.gftweaks.plan_tier2.name=§6Tier 2 Rocket Plan
 item.gftweaks.plan_tier2.tooltip=A rough plan for Tier 2 Rocket.
@@ -39,7 +40,7 @@ item.gftweaks.blaze_chunk.name=Blaze Chunk
 item.gftweaks.heavy_duty_composite.name=Heavy Duty Composite
 item.gftweaks.compressed_heavy_duty_composite.name=Compressed Heavy Duty Composite
 item.gftweaks.tiny_plastic_container.name=Tiny Plastic Container
-item.gftweaks.nether_flame_sauce.name=Nether Flame Sauce
+item.gftweaks.nether_flame_sauce.name=§6Nether Flame Sauce
 
 gftweaks.material.ardite=Ardite
 gftweaks.material.manyullyn=Manyullyn
@@ -67,3 +68,6 @@ gftweaks.machine.saw.uv.name=Ultimate Saw
 gftweaks.machine.laser_fabricator.name=Laser Fabricator
 recipemap.saw.name=Saw
 recipemap.laser_fabricator.name=Laser Fabricator
+
+tile.gftweaks.carbon_machine_casing.name=Carbon Machine Casing
+tile.gftweaks.carbon_machine_hull.name=Carbon Machine Hull

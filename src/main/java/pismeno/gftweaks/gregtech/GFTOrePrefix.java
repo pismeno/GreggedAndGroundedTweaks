@@ -1,5 +1,6 @@
 package pismeno.gftweaks.gregtech;
 
+import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.ore.OrePrefix;
 
 import static gregtech.api.GTValues.M;
@@ -13,5 +14,5 @@ public class GFTOrePrefix {
             ENABLE_UNIFICATION, material -> material.hasFlag(GFTMaterialFlags.GENERATE_CHIPS));
 
     public static final OrePrefix cuttingBlade = new OrePrefix("cuttingBlade", M * 4, null, GFTMaterialIconTypes.cuttingBlade,
-            ENABLE_UNIFICATION, material -> material.hasFlag(GFTMaterialFlags.GENERATE_CUTTING_BLADE));
+            ENABLE_UNIFICATION, material -> material.hasFlag(GFTMaterialFlags.GENERATE_CUTTING_BLADE) && material.hasFlag(MaterialFlags.GENERATE_PLATE));
 }

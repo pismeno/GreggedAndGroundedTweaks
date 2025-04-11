@@ -103,8 +103,8 @@ public class GFTMaterials {
         Inconel = new Material.Builder(32011, new ResourceLocation(Tags.MODID, "inconel"))
                 .ingot()
                 .color(0xa0a6a8).iconSet(METALLIC)
-                .flags(GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING, GENERATE_DENSE)
-                .blast(1780, BlastProperty.GasTier.HIGH)
+                .flags(GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING, GENERATE_DOUBLE_PLATE)
+                //.blast(2849)
                 .components(Materials.Nickel, 6, Materials.Chrome, 2, Materials.Cobalt, 1, Materials.Molybdenum, 1)
                 .build();
 

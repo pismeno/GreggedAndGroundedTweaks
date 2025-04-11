@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import pismeno.gftweaks.client.GFTTextures;
+import pismeno.gftweaks.common.GFTBlocks;
 import pismeno.gftweaks.common.GFTItems;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID, value = Side.CLIENT)
@@ -40,6 +41,7 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
+        GFTBlocks.registerModels();
         GFTItems.registerModels();
     }
 }

@@ -81,10 +81,10 @@ public class GFTItems {
     }
 
     public static void registerItems(RegistryEvent.Register<Item> event){
-        for (Item item : GFTItems.ITEMS) {
+        for (Item item : ITEMS) {
             event.getRegistry().register(item);
             GfTweaks.LOGGER.info("Registered item " + item.getRegistryName());
         }
-        GfTweaks.LOGGER.info("Registered " + GFTItems.ITEMS.size() + " items");
+        GfTweaks.LOGGER.info("Registered " + ITEMS.size() + " items");
     }
 }

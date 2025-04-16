@@ -1,15 +1,18 @@
 package pismeno.gftweaks;
 
-
-import gregtech.api.GregTechAPI;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.PostMaterialEvent;
-import gregtech.api.unification.stack.ItemMaterialInfo;
+import gregtech.api.unification.ore.StoneType;
 import gregtech.common.items.MetaItems;
+import micdoodle8.mods.galacticraft.core.GCBlocks;
+import micdoodle8.mods.galacticraft.core.blocks.BlockBasicMoon;
+import micdoodle8.mods.galacticraft.planets.mars.blocks.BlockBasicMars;
+import micdoodle8.mods.galacticraft.planets.mars.blocks.MarsBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -21,10 +24,12 @@ import pismeno.gftweaks.common.GFTBlocks;
 import pismeno.gftweaks.common.GFTItems;
 import pismeno.gftweaks.common.recipes.CraftingRecipes;
 import pismeno.gftweaks.common.recipes.MetaItemHandler;
+import pismeno.gftweaks.common.recipes.MachineRecipes;
+import pismeno.gftweaks.galacticraft.TradeListEditor;
 import pismeno.gftweaks.general.OreDict;
 import pismeno.gftweaks.gregtech.GFTMaterials;
 import pismeno.gftweaks.gregtech.GFTOrePrefix;
-import pismeno.gftweaks.gregtech.MachineRecipes;
+import pismeno.gftweaks.gregtech.GFTStoneTypes;
 import pismeno.gftweaks.gregtech.MaterialModifications;
 import pismeno.gftweaks.gregtech.metatileentities.MetaTileEntities;
 import pismeno.gftweaks.tconstruct.TcMaterials;
@@ -35,6 +40,7 @@ public class CommonProxy {
         TcMaterials.preInit();
         GFTBlocks.init();
         GFTItems.init();
+        TradeListEditor.init();
     }
 
     public void init(FMLInitializationEvent event) {
@@ -58,14 +64,15 @@ public class CommonProxy {
         GFTBlocks.registerBlocks(event);
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent
     public static void onRecipeRegistration(RegistryEvent.Register<IRecipe> event) {
+        MetaItemHandler.init();
+    }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onRecipeRegistrationLate(RegistryEvent.Register<IRecipe> event) {
         CraftingRecipes.init();
         MachineRecipes.init();
-
-        MinecraftForge.EVENT_BUS.post(new GregTechAPI.RegisterEvent<>(null, ItemMaterialInfo.class));
-        MetaItemHandler.init();
     }
 
     @SubscribeEvent
@@ -76,8 +83,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void onPostMaterialRegistration(PostMaterialEvent event) {
-        MetaItems.addOrePrefix(GFTOrePrefix.chipEngraved);
-        MetaItems.addOrePrefix(GFTOrePrefix.chipRaw);
-        MetaItems.addOrePrefix(GFTOrePrefix.cuttingBlade);
+        GFTOrePrefix.PREFIXES.forEach(MetaItems::addOrePrefix);
+        GFTStoneTypes.init();
     }
 }

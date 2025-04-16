@@ -1,8 +1,9 @@
 package pismeno.gftweaks.gregtech;
 
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.attribute.FluidAttributes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.util.ResourceLocation;
 import pismeno.gftweaks.Tags;
@@ -13,10 +14,12 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.DIAMOND;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.util.GTUtility.gregtechId;
 import static pismeno.gftweaks.gregtech.GFTMaterialFlags.GENERATE_CHIPS;
 
 public class GFTMaterials {
 
+    public static Material EnhancedGlue;
     public static Material Wyrmwood;
     public static Material Enori;
     public static Material Diamatine;
@@ -33,6 +36,10 @@ public class GFTMaterials {
     private static final Map<Material, OrePrefix[]> ignoredItems = new HashMap<>();
 
     public static void init() {
+
+        EnhancedGlue = new Material.Builder(32001, new ResourceLocation(Tags.MODID,"enhanced_glue"))
+                .fluid()
+                .color(0xFCBC65).flags(STICKY).build();
 
         Wyrmwood = new Material.Builder(32002, new ResourceLocation(Tags.MODID, "wyrmwood"))
                 .dust(3)

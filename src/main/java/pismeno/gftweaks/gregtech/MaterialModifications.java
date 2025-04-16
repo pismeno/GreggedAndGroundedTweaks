@@ -15,6 +15,11 @@ public class MaterialModifications {
         Inconel.setProperty(PropertyKey.BLAST, new BlastProperty(1780));
         Flint.setMaterialRGB(0x565656);
 
+        BlueAlloy.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
+        BlackSteel.addFlags(MaterialFlags.GENERATE_LONG_ROD, MaterialFlags.GENERATE_RING);
+
+        Diamond.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
+        GarnetYellow.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
         Amethyst.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
         Lapotron.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
         Emerald.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
@@ -26,8 +31,6 @@ public class MaterialModifications {
         Bronze.addFlags(MaterialFlags.GENERATE_FOIL);
         Iron.addFlags(MaterialFlags.GENERATE_FOIL);
 
-        Bronze.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);
-        Steel.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);
         CobaltBrass.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);
         VanadiumSteel.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);
         BlueSteel.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);

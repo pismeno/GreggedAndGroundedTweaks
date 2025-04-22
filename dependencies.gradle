@@ -50,5 +50,5 @@ dependencies {
     implementation "curse.maven:gregs-tinkering-1233535:6381677"
     implementation "curse.maven:mixinbootstrap-357178:3437402"
     implementation "curse.maven:actually-additions-228404:3117927"
-    implementation "curse.maven:forestry-59751:6104316"
+    implementation "curse.maven:open-terrain-generator-265894:5286210"
 }

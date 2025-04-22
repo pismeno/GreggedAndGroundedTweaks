@@ -1,7 +1,9 @@
 package pismeno.gftweaks.gregtech;
 
 import gregtech.api.unification.material.info.MaterialFlags;
+import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.IngotProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import pismeno.gftweaks.GfTweaks;
 
@@ -12,10 +14,16 @@ import static pismeno.gregstinkering.unification.GTCGregtechMaterials.*;
 public class MaterialModifications {
     public static void init() {
         Ardite.setProperty(PropertyKey.BLAST, new BlastProperty(1780));
-        Inconel.setProperty(PropertyKey.BLAST, new BlastProperty(1780));
         Flint.setMaterialRGB(0x565656);
+        Electrotine.setProperty(PropertyKey.INGOT, new IngotProperty());
+        Electrotine.setMaterialRGB(0x0E73AA);
+        Electrotine.setMaterialIconSet(MaterialIconSet.METALLIC);
 
+
+        Silicon.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
+        CertusQuartz.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
         BlueAlloy.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
+        Graphene.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
         BlackSteel.addFlags(MaterialFlags.GENERATE_LONG_ROD, MaterialFlags.GENERATE_RING);
 
         Diamond.addFlags(GFTMaterialFlags.GENERATE_CHIPS);
@@ -30,6 +38,7 @@ public class MaterialModifications {
         Steel.addFlags(MaterialFlags.GENERATE_FOIL);
         Bronze.addFlags(MaterialFlags.GENERATE_FOIL);
         Iron.addFlags(MaterialFlags.GENERATE_FOIL);
+        PolyvinylButyral.addFlags(MaterialFlags.GENERATE_FOIL);
 
         CobaltBrass.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);
         VanadiumSteel.addFlags(GFTMaterialFlags.GENERATE_CUTTING_BLADE);

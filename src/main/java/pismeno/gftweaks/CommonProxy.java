@@ -1,16 +1,9 @@
 package pismeno.gftweaks;
 
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.PostMaterialEvent;
-import gregtech.api.unification.ore.StoneType;
 import gregtech.common.items.MetaItems;
-import micdoodle8.mods.galacticraft.core.GCBlocks;
-import micdoodle8.mods.galacticraft.core.blocks.BlockBasicMoon;
-import micdoodle8.mods.galacticraft.planets.mars.blocks.BlockBasicMars;
-import micdoodle8.mods.galacticraft.planets.mars.blocks.MarsBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -32,6 +25,7 @@ import pismeno.gftweaks.gregtech.GFTOrePrefix;
 import pismeno.gftweaks.gregtech.GFTStoneTypes;
 import pismeno.gftweaks.gregtech.MaterialModifications;
 import pismeno.gftweaks.gregtech.metatileentities.MetaTileEntities;
+import pismeno.gftweaks.tconstruct.RemoveMelting;
 import pismeno.gftweaks.tconstruct.TcMaterials;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
@@ -41,6 +35,7 @@ public class CommonProxy {
         GFTBlocks.init();
         GFTItems.init();
         TradeListEditor.init();
+        RemoveMelting.init();
     }
 
     public void init(FMLInitializationEvent event) {

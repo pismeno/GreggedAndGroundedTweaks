@@ -3,30 +3,28 @@ package pismeno.gftweaks.common.recipes;
 import de.ellpeck.actuallyadditions.mod.items.InitItems;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.Recipe;
-
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.MarkerMaterials.Component;
 import gregtech.api.unification.material.MarkerMaterials.Color;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.items.MetaItems;
+import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import pismeno.gftweaks.common.GFTItems;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import pismeno.gftweaks.gregtech.GFTMaterials;
 import pismeno.gftweaks.gregtech.GFTOrePrefix;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.BlueAlloy;
-import static gregtech.api.unification.material.Materials.Electrum;
-import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.items.MetaItems.WORKSTATION_EV;
+import static pismeno.gftweaks.common.GFTItems.*;
 import static pismeno.gftweaks.gregtech.GFTRecipeMaps.*;
 
 public class MachineRecipes {
@@ -36,6 +34,8 @@ public class MachineRecipes {
         registerAAFlawlessRecipes();
         registerChipsRecipes();
         registerChipsetRecipes();
+        registerCircuits();
+
     }
 
     public static void postInit() {
@@ -43,44 +43,242 @@ public class MachineRecipes {
     }
 
     private static void addGeneric() {
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(GFTItems.HEAVY_DUTY_COMPOSITE)
-                .output(GFTItems.COMPRESSED_HEAVY_DUTY_COMPOSITE)
-                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, 8))
-                .duration(20).EUt(VA[EV])
+        addImplosionRecipe(HEAVY_DUTY_COMPOSITE, COMPRESSED_HEAVY_DUTY_COMPOSITE, 8);
+        addImplosionRecipe(HEAVY_DUTY_COMPOSITE2, COMPRESSED_HEAVY_DUTY_COMPOSITE2, 8);
+
+        COMPRESSOR_RECIPES.recipeBuilder()
+                .EUt(VA[EV]).duration(1200)
+                .input(HEAVY_DUTY_COMPOSITE3)
+                .output(AsteroidsItems.basicItem, 1, 5)
                 .buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(GFTItems.HEAVY_DUTY_COMPOSITE)
-                .output(GFTItems.COMPRESSED_HEAVY_DUTY_COMPOSITE)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[EV])
+//        LASER_ENGRAVER_RECIPES.recipeBuilder()
+//                        .EUt(VA[EV]).duration(400)
+//                        .input(HEAVY_DUTY_COMPOSITE3)
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .EUt(480).duration(1200)
+                .input(CENTRAL_PROCESSING_UNIT_WAFER)
+                .input(OrePrefix.plate, Materials.Glowstone, 2)
+                .input(CARBON_FIBERS, 16)
+                .input(OrePrefix.lens, GFTMaterials.Void)
+                .output(NANO_CENTRAL_PROCESSING_UNIT_WAFER)
+                .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(GFTItems.HEAVY_DUTY_COMPOSITE)
-                .output(GFTItems.COMPRESSED_HEAVY_DUTY_COMPOSITE)
-                .explosivesType(MetaItems.DYNAMITE.getStackForm(2))
-                .duration(20).EUt(VA[EV])
+//        LASER_FABRICATOR_RECIPES.recipeBuilder()
+//                .EUt(480).duration(200)
+//                .notConsumable(getItemStack("appliedenergistics2:material", 19, 1))
+//                .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
+//                .input(OrePrefix.plateDouble, Materials.Silicon, 3)
+//                .input(APPLICATING_CHIPSET)
+//                .outputs(getItemStack("appliedenergistics2:material", 20, 1))
+//                .cleanroom(CleanroomType.CLEANROOM)
+//                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .notConsumable(getItemStack("appliedenergistics2:material", 15, 1))
+                .EUt(480).duration(300)
+                .input(OrePrefix.plateDouble, Materials.Gold, 2)
+                .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
+                .input(LOGIC_CHIPSET)
+                .input(APPLICATING_CHIPSET)
+                .outputs(getItemStack("appliedenergistics2:material", 18, 1))
+                .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(GFTItems.HEAVY_DUTY_COMPOSITE)
-                .output(GFTItems.COMPRESSED_HEAVY_DUTY_COMPOSITE)
-                .explosivesType(new ItemStack(MetaBlocks.ITNT))
-                .duration(20).EUt(VA[EV])
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .notConsumable(getItemStack("appliedenergistics2:material", 13, 1))
+                .EUt(480).duration(300)
+                .input(OrePrefix.plateDouble, Materials.CertusQuartz, 2)
+                .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
+                .input(COMPUTING_CHIPSET)
+                .input(APPLICATING_CHIPSET)
+                .outputs(getItemStack("appliedenergistics2:material", 16, 1))
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .notConsumable(getItemStack("appliedenergistics2:material", 14, 1))
+                .EUt(480).duration(300)
+                .input(OrePrefix.plate, Materials.Diamond, 4)
+                .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
+                .input(CENTRAL_CHIPSET)
+                .input(APPLICATING_CHIPSET)
+                .outputs(getItemStack("appliedenergistics2:material", 17, 1))
+                .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
     }
 
     public static void registerCircuits() {
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[MV]).duration(400)
-                .input(MetaItems.PLASTIC_CIRCUIT_BOARD)
-                .input(MetaItems.PROCESSOR_ASSEMBLY_HV, 2)
-                .input(OrePrefix.component, MarkerMaterials.Component.Diode, 4)
-                .input(MetaItems.RANDOM_ACCESS_MEMORY, 4)
+        //WORKSTATION
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(VA[MV]).duration(400)
+                .input(PLASTIC_CIRCUIT_BOARD)
+                .input(PROCESSOR_ASSEMBLY_HV, 2)
+                .input(OrePrefix.component, Component.Diode, 4)
+                .input(RANDOM_ACCESS_MEMORY, 4)
                 .input(OrePrefix.wireFine, Materials.Electrum, 16)
-                .input(GFTItems.COMPUTING_CHIPSET)
-                .output(MetaItems.WORKSTATION_EV)
+                .input(COMPUTING_CHIPSET)
+                .output(WORKSTATION_EV)
+                .solderMultiplier(2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //NANOPROCESSOR
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(200)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(SMD_RESISTOR, 8)
+                .input(SMD_CAPACITOR, 8)
+                .input(SMD_TRANSISTOR, 8)
+                .input(COMPUTING_CHIPSET)
+                .output(NANO_PROCESSOR_HV, 2)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(100)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(ADVANCED_SMD_RESISTOR, 2)
+                .input(ADVANCED_SMD_CAPACITOR, 2)
+                .input(ADVANCED_SMD_TRANSISTOR, 2)
+                .input(COMPUTING_CHIPSET)
+                .output(NANO_PROCESSOR_HV, 2)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(9600).duration(50)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(ADVANCED_SYSTEM_ON_CHIP)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(COMPUTING_CHIPSET)
+                .input(OrePrefix.bolt, Materials.Platinum, 4)
+                .output(NANO_PROCESSOR_HV, 4)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //NANOPROCESSOR ASSEMBLY
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(400)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_PROCESSOR_HV, 2)
+                .input(SMD_INDUCTOR, 4)
+                .input(SMD_CAPACITOR, 8)
+                .input(RANDOM_ACCESS_MEMORY, 8)
+                .input(CONTROL_CHIPSET)
+                .output(NANO_PROCESSOR_ASSEMBLY_EV)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(200)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_PROCESSOR_HV, 2)
+                .input(ADVANCED_SMD_INDUCTOR, 1)
+                .input(ADVANCED_SMD_CAPACITOR, 2)
+                .input(RANDOM_ACCESS_MEMORY, 8)
+                .input(CONTROL_CHIPSET)
+                .output(NANO_PROCESSOR_ASSEMBLY_EV)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //MAINFRAME
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(480).duration(800)
+                .input(OrePrefix.frameGt, Materials.Aluminium, 2)
+                .input(WORKSTATION_EV, 2)
+                .input(OrePrefix.component, Component.Inductor, 8)
+                .input(OrePrefix.component, Component.Capacitor, 16)
+                .input(RANDOM_ACCESS_MEMORY, 16)
+                .input(CONTROL_CHIPSET)
+                .output(MAINFRAME_IV)
+                .solderMultiplier(4)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(480).duration(400)
+                .input(OrePrefix.frameGt, Materials.Aluminium, 2)
+                .input(WORKSTATION_EV, 2)
+                .input(ADVANCED_SMD_INDUCTOR, 2)
+                .input(ADVANCED_SMD_CAPACITOR, 4)
+                .input(RANDOM_ACCESS_MEMORY, 16)
+                .input(CONTROL_CHIPSET)
+                .output(MAINFRAME_IV)
+                .solderMultiplier(4)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //QUANTUMPROCESSOR
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(2400).duration(200)
+                .input(EXTREME_CIRCUIT_BOARD)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(QUBIT_CENTRAL_PROCESSING_UNIT)
+                .input(SMD_CAPACITOR, 12)
+                .input(SMD_TRANSISTOR, 12)
+                .input(CENTRAL_CHIPSET)
+                .output(QUANTUM_PROCESSOR_EV, 2)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(2400).duration(100)
+                .input(EXTREME_CIRCUIT_BOARD)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(QUBIT_CENTRAL_PROCESSING_UNIT)
+                .input(ADVANCED_SMD_CAPACITOR, 3)
+                .input(ADVANCED_SMD_TRANSISTOR, 3)
+                .input(CENTRAL_CHIPSET)
+                .output(QUANTUM_PROCESSOR_EV, 2)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(38400).duration(50)
+                .input(EXTREME_CIRCUIT_BOARD)
+                .input(ADVANCED_SYSTEM_ON_CHIP)
+                .input(CENTRAL_CHIPSET)
+                .input(OrePrefix.bolt, Materials.NiobiumTitanium, 8)
+                .output(QUANTUM_PROCESSOR_EV, 4)
+                .solderMultiplier(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //NANO SUPERCOMPUTER
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(400)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_PROCESSOR_ASSEMBLY_EV, 2)
+                .input(SMD_DIODE, 8)
+                .input(NOR_MEMORY_CHIP, 4)
+                .input(RANDOM_ACCESS_MEMORY, 16)
+                .input(CENTRAL_CHIPSET)
+                .output(NANO_COMPUTER_IV)
+                .solderMultiplier(2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(200)
+                .input(ADVANCED_CIRCUIT_BOARD)
+                .input(NANO_PROCESSOR_ASSEMBLY_EV, 2)
+                .input(ADVANCED_SMD_DIODE, 2)
+                .input(NOR_MEMORY_CHIP, 4)
+                .input(RANDOM_ACCESS_MEMORY, 16)
+                .input(CENTRAL_CHIPSET)
+                .output(NANO_COMPUTER_IV)
                 .solderMultiplier(2)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -92,7 +290,7 @@ public class MachineRecipes {
                 .input(OrePrefix.wireFine, Materials.RedAlloy, 12)
                 .notConsumable(OrePrefix.craftingLens, Color.Yellow)
                 .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
-                .output(GFTItems.PROCESSING_CHIPSET)
+                .output(PROCESSING_CHIPSET)
                 .duration(250).EUt(VA[HV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -102,7 +300,7 @@ public class MachineRecipes {
                 .input(OrePrefix.wireFine, Materials.BlueAlloy, 12)
                 .notConsumable(OrePrefix.lens, GFTMaterials.Enori)
                 .notConsumable(OrePrefix.lens, GFTMaterials.Palis)
-                .output(GFTItems.COMPUTING_CHIPSET)
+                .output(COMPUTING_CHIPSET)
                 .duration(300).EUt(VA[HV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -112,7 +310,7 @@ public class MachineRecipes {
                 .input(OrePrefix.wireFine, Materials.Silver, 12)
                 .notConsumable(OrePrefix.craftingLens, Color.Purple)
                 .notConsumable(OrePrefix.lens, GFTMaterials.Enori)
-                .output(GFTItems.GRAPHIC_CHIPSET)
+                .output(GRAPHIC_CHIPSET)
                 .duration(300).EUt(VA[HV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -122,8 +320,28 @@ public class MachineRecipes {
                 .input(OrePrefix.wireFine, Materials.RedAlloy, 12)
                 .notConsumable(OrePrefix.lens, Materials.Diamond)
                 .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
-                .output(GFTItems.LOGIC_CHIPSET)
+                .output(LOGIC_CHIPSET)
                 .duration(300).EUt(VA[HV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipEngraved, GFTMaterials.Restonia)
+                .input(OrePrefix.wireFine, Materials.Platinum, 12)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Enori)
+                .output(CONTROL_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipEngraved, GFTMaterials.Void)
+                .input(OrePrefix.wireFine, Materials.Graphene, 12)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Void)
+                .notConsumable(OrePrefix.craftingLens, Color.Gray)
+                .output(CENTRAL_CHIPSET)
+                .duration(300).EUt(VA[EV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
     }
@@ -133,6 +351,8 @@ public class MachineRecipes {
         addRawChipRecipe(GFTMaterials.Enori, true);
         addRawChipRecipe(Materials.GarnetYellow, true);
         addRawChipRecipe(Materials.Diamond, true);
+        addRawChipRecipe(GFTMaterials.Restonia, false);
+        addRawChipRecipe(GFTMaterials.Void, false);
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(GFTOrePrefix.chipRaw, GFTMaterials.Enori)
@@ -162,6 +382,30 @@ public class MachineRecipes {
                 .input(GFTOrePrefix.chipRaw, Materials.Diamond)
                 .notConsumable(OrePrefix.lens, Materials.Diamond)
                 .output(GFTOrePrefix.chipEngraved, Materials.Diamond)
+                .duration(400).EUt(240)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipRaw, Materials.Diamond)
+                .notConsumable(OrePrefix.lens, Materials.Diamond)
+                .output(GFTOrePrefix.chipEngraved, Materials.Diamond)
+                .duration(400).EUt(240)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipRaw, GFTMaterials.Restonia)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
+                .output(GFTOrePrefix.chipEngraved, GFTMaterials.Restonia)
+                .duration(400).EUt(240)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipRaw, GFTMaterials.Void)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Void)
+                .output(GFTOrePrefix.chipEngraved, GFTMaterials.Void)
                 .duration(400).EUt(240)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -243,6 +487,54 @@ public class MachineRecipes {
                 .duration(800).EUt(280)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+    }
+
+    private static void addImplosionRecipe(Item input, Item output, int explosives) {
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(input)
+                .output(output)
+                .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, explosives))
+                .duration(20).EUt(896)
+                .buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(input)
+                .output(output)
+                .explosivesAmount(explosives / 2)
+                .duration(20).EUt(896)
+                .buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(input)
+                .output(output)
+                .explosivesType(DYNAMITE.getStackForm(explosives / 4))
+                .duration(20).EUt(896)
+                .buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(input)
+                .output(output)
+                .explosivesType(new ItemStack(MetaBlocks.ITNT))
+                .duration(20).EUt(896)
+                .buildAndRegister();
+    }
+
+    private static ItemStack getItemStack(String registryName, int meta, int count) {
+        try {
+            ResourceLocation resourceLocation = new ResourceLocation(registryName);
+            Item item = ForgeRegistries.ITEMS.getValue(resourceLocation);
+
+            if (item == null) {
+                System.err.println("Item not found: " + registryName);
+                return ItemStack.EMPTY;
+            }
+
+            return new ItemStack(item, count, meta);
+        } catch (Exception e) {
+            System.err.println("Error creating ItemStack for: " + registryName);
+            e.printStackTrace();
+            return ItemStack.EMPTY;
+        }
     }
 
     private  MachineRecipes() {}

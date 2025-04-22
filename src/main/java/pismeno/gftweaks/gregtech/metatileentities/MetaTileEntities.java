@@ -18,6 +18,11 @@ public class MetaTileEntities {
     public static SteamSaw STEAM_SAW_STEEL;
     public static LaserFabricator LASER_FABRICATOR;
 
+    public static MEInputBus ME_INPUT_BUS;
+    public static MEOutputBus ME_OUTPUT_BUS;
+    public static MEInputHatch ME_INPUT_HATCH;
+    public static MEOutputHatch ME_OUTPUT_HATCH;
+
     private MetaTileEntities() {}
 
     public static void init() {
@@ -29,5 +34,11 @@ public class MetaTileEntities {
 
         LASER_FABRICATOR = registerMetaTileEntity(11011,
                 new LaserFabricator(new ResourceLocation(Tags.MODID, "laser_fabricator")));
+
+        ME_INPUT_BUS = registerMetaTileEntity(11012, new MEInputBus(new ResourceLocation(Tags.MODID, "me_input_bus")));
+        ME_OUTPUT_BUS = registerMetaTileEntity(11013, new MEOutputBus(new ResourceLocation(Tags.MODID, "me_output_bus")));
+        ME_INPUT_HATCH = registerMetaTileEntity(11014, new MEInputHatch(new ResourceLocation(Tags.MODID, "me_input_hatch")));
+        ME_OUTPUT_HATCH = registerMetaTileEntity(11015, new MEOutputHatch(new ResourceLocation(Tags.MODID, "me_output_hatch")));
+
     }
 }

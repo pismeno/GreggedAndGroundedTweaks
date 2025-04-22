@@ -48,6 +48,7 @@ public class DungeonLoot {
         GalacticraftRegistry.addDungeonLoot(1, new ItemStack(GFTItems.PLAN_BUGGY_MOON));
         GalacticraftRegistry.addDungeonLoot(2, new ItemStack(GFTItems.PLAN_TIER3));
         GalacticraftRegistry.addDungeonLoot(2, new ItemStack(GFTItems.PLAN_ROVER_MARS));
+        GalacticraftRegistry.addDungeonLoot(3, new ItemStack(GFTItems.PLAN_ROVER_MARS));
         GalacticraftRegistry.addDungeonLoot(3, new ItemStack(GFTItems.PLAN_ROVER_VENUS));
         GalacticraftRegistry.addDungeonLoot(4, new ItemStack(GFTItems.PLAN_TIER4));
         GalacticraftRegistry.addDungeonLoot(5, new ItemStack(GFTItems.PLAN_TIER5));

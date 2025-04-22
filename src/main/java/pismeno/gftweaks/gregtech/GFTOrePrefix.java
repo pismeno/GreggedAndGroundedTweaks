@@ -38,6 +38,33 @@ public class GFTOrePrefix {
     public static final OrePrefix oreMercuryRock = new OrePrefix("oreMercuryRock", -1, null, MaterialIconType.ore,
             ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
 
+    public static final OrePrefix oreCeresRock = new OrePrefix("oreCeresRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreSaturnRock = new OrePrefix("oreSaturnRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreJupiterRock = new OrePrefix("oreJupiterRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreUranusRock = new OrePrefix("oreUranusRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreNeptuneRock = new OrePrefix("oreNeptuneRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix orePlutoRock = new OrePrefix("orePlutoRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreErisRock = new OrePrefix("oreErisRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreKepler22bRock = new OrePrefix("oreKepler22bRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreEuropaRock = new OrePrefix("oreEuropaRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
     private GFTOrePrefix() {}
 
     private static OrePrefix prefix(String name, long materialAmount, Material material, MaterialIconType icon, long flags, Predicate<Material> condition) {

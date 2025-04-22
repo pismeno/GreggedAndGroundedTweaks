@@ -37,6 +37,9 @@ public class GFTItems {
 
     public static Item HEAVY_DUTY_COMPOSITE;
     public static Item COMPRESSED_HEAVY_DUTY_COMPOSITE;
+    public static Item HEAVY_DUTY_COMPOSITE2;
+    public static Item COMPRESSED_HEAVY_DUTY_COMPOSITE2;
+    public static Item HEAVY_DUTY_COMPOSITE3;
 
     public static Item GRAVEL_STRAINER;
 
@@ -47,6 +50,9 @@ public class GFTItems {
     public static Item COMPUTING_CHIPSET;
     public static Item GRAPHIC_CHIPSET;
     public static Item LOGIC_CHIPSET;
+    public static Item CONTROL_CHIPSET;
+    public static Item CENTRAL_CHIPSET;
+    public static Item APPLICATING_CHIPSET;
 
     public static void init() {
         PLAN_TIER2 = new ItemPlan("tier2");
@@ -73,6 +79,9 @@ public class GFTItems {
 
         HEAVY_DUTY_COMPOSITE = new ItemHeavyDuty("heavy_duty_composite");
         COMPRESSED_HEAVY_DUTY_COMPOSITE = new ItemHeavyDuty("compressed_heavy_duty_composite");
+        HEAVY_DUTY_COMPOSITE2 = new ItemHeavyDuty("heavy_duty_composite2");
+        COMPRESSED_HEAVY_DUTY_COMPOSITE2 = new ItemHeavyDuty("compressed_heavy_duty_composite2");
+        HEAVY_DUTY_COMPOSITE3 = new ItemHeavyDuty("heavy_duty_composite3");
 
         GRAVEL_STRAINER = new ItemGravelStrainer("gravel_strainer");
 
@@ -83,6 +92,9 @@ public class GFTItems {
         COMPUTING_CHIPSET = new ItemGeneric("computing_chipset");
         GRAPHIC_CHIPSET = new ItemGeneric("graphic_chipset");
         LOGIC_CHIPSET = new ItemGeneric("logic_chipset");
+        CONTROL_CHIPSET = new ItemGeneric("control_chipset");
+        CENTRAL_CHIPSET = new ItemGeneric("central_chipset");
+        APPLICATING_CHIPSET= new ItemGeneric("applicating_chipset");
     }
 
     public static void registerModels() {

@@ -8,6 +8,10 @@ repositories {
         url = "https://maven.gtceu.com"
     }
 
+    maven {
+        url 'https://jitpack.io'
+    }
+
     flatDir {
         dirs 'libs'
     }

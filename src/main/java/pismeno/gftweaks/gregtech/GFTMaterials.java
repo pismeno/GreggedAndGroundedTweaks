@@ -1,12 +1,11 @@
 package pismeno.gftweaks.gregtech;
 
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.attribute.FluidAttributes;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.util.ResourceLocation;
 import pismeno.gftweaks.Tags;
+import pismeno.gregstinkering.unification.GTCGregtechMaterials;
 
 import java.util.*;
 
@@ -14,13 +13,13 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.DIAMOND;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.util.GTUtility.gregtechId;
 import static pismeno.gftweaks.gregtech.GFTMaterialFlags.GENERATE_CHIPS;
 
 public class GFTMaterials {
 
     public static Material EnhancedGlue;
     public static Material Wyrmwood;
+    public static Material MenrilWood;
     public static Material Enori;
     public static Material Diamatine;
     public static Material Emeradic;
@@ -30,6 +29,9 @@ public class GFTMaterials {
     public static Material CornFlour;
     public static Material QuartzBlack;
     public static Material Inconel;
+    public static Material Kemacite;
+    public static Material Taenite;
+    public static Material Cobardite;
 
     public static final List<Material> AAMaterials = new ArrayList<>();
 
@@ -37,9 +39,15 @@ public class GFTMaterials {
 
     public static void init() {
 
-        EnhancedGlue = new Material.Builder(32001, new ResourceLocation(Tags.MODID,"enhanced_glue"))
+        EnhancedGlue = new Material.Builder(32000, new ResourceLocation(Tags.MODID,"enhanced_glue"))
                 .fluid()
                 .color(0xFCBC65).flags(STICKY).build();
+
+        MenrilWood = new Material.Builder(32001, new ResourceLocation(Tags.MODID, "menril_wood"))
+                .dust(1)
+                .color(0x5C728A).iconSet(FINE)
+                .flags(GENERATE_PLATE, GENERATE_ROD, NO_SMELTING, FLAMMABLE)
+                .build();
 
         Wyrmwood = new Material.Builder(32002, new ResourceLocation(Tags.MODID, "wyrmwood"))
                 .dust(3)
@@ -111,8 +119,32 @@ public class GFTMaterials {
                 .ingot()
                 .color(0xa0a6a8).iconSet(METALLIC)
                 .flags(GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING, GENERATE_DOUBLE_PLATE)
-                //.blast(2849)
+                .blast(2537)
                 .components(Materials.Nickel, 6, Materials.Chrome, 2, Materials.Cobalt, 1, Materials.Molybdenum, 1)
+                .build();
+
+        Kemacite = new Material.Builder(32012, new ResourceLocation(Tags.MODID, "kemacite"))
+                .dust(1).ore()
+                .color(0xC0C0C0).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING, DECOMPOSITION_BY_CENTRIFUGING)
+                .addOreByproducts(Materials.Cobalt)
+                .components(Materials.Iron, 9, Materials.Nickel, 1)
+                .build();
+
+        Taenite = new Material.Builder(32013, new ResourceLocation(Tags.MODID, "taenite"))
+                .dust(1).ore()
+                .color(0xA9A9A9).iconSet(METALLIC)
+                .flags(NO_SMELTING, DECOMPOSITION_BY_ELECTROLYZING, DECOMPOSITION_BY_CENTRIFUGING)
+                .addOreByproducts(Materials.Cobalt)
+                .components(Materials.Iron, 1, Materials.Nickel, 1)
+                .build();
+
+        Cobardite = new Material.Builder(32014, new ResourceLocation(Tags.MODID, "cobardite"))
+                .dust(1).ore()
+                .color(0x714CD1).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING, DECOMPOSITION_BY_CENTRIFUGING)
+                .addOreByproducts(Materials.Iron)
+                .components(Materials.Cobalt, 3, GTCGregtechMaterials.Ardite, 1)
                 .build();
 
         AAMaterials.addAll(Arrays.asList(Restonia, Palis, Diamatine, Void, Emeradic, Enori));
@@ -123,6 +155,7 @@ public class GFTMaterials {
         ignoredItems.put(Palis, new OrePrefix[]{gem, block});
         ignoredItems.put(Restonia, new OrePrefix[]{gem, block});
         ignoredItems.put(Void, new OrePrefix[]{gem, block});
+        //ignoredItems.put(Materials.Electrotine, new OrePrefix[]{dust, ingot});
 
         for (Map.Entry<Material, OrePrefix[]> entry : ignoredItems.entrySet()) {
             Material material = entry.getKey();

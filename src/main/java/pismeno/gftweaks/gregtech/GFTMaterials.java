@@ -2,6 +2,7 @@ package pismeno.gftweaks.gregtech;
 
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.util.ResourceLocation;
 import pismeno.gftweaks.Tags;
@@ -32,6 +33,9 @@ public class GFTMaterials {
     public static Material Kemacite;
     public static Material Taenite;
     public static Material Cobardite;
+    public static Material Fluix;
+    public static Material FluixPearl;
+    public static Material Lunarite;
 
     public static final List<Material> AAMaterials = new ArrayList<>();
 
@@ -67,7 +71,7 @@ public class GFTMaterials {
                 .gem()
                 .color(0x6861ed).iconSet(DIAMOND)
                 .flags(GENERATE_PLATE, GENERATE_ROD, EXCLUDE_PLATE_COMPRESSOR_RECIPE, GENERATE_LENS, GENERATE_CHIPS,
-                        NO_SMASHING, NO_SMELTING, NO_WORKING,
+                        NO_SMASHING, NO_SMELTING, GENERATE_BOLT_SCREW,
                         EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
                 .build();
 
@@ -147,6 +151,25 @@ public class GFTMaterials {
                 .components(Materials.Cobalt, 3, GTCGregtechMaterials.Ardite, 1)
                 .build();
 
+        Fluix = new Material.Builder(32015, new ResourceLocation(Tags.MODID, "fluix"))
+                .dust()
+                .color(0x6050AA).iconSet(CERTUS)
+                .components(Materials.CertusQuartz, 2, GTCGregtechMaterials.Manyullyn, 1, Materials.Amethyst, 1)
+                .build();
+
+        FluixPearl = new Material.Builder(32016, new ResourceLocation(Tags.MODID, "fluix_pearl"))
+                .dust()
+                .color(0x7949b8).iconSet(SHINY)
+                .components(Fluix, 8, Materials.EnderPearl, 1)
+                .build();
+
+        Lunarite = new Material.Builder(32017, new ResourceLocation(Tags.MODID, "lunarite"))
+                .gem().ore()
+                .color(0x0618B2).iconSet(GEM_VERTICAL)
+                .flags()
+                .components(Materials.Sapphire, 1)
+                .build();
+
         AAMaterials.addAll(Arrays.asList(Restonia, Palis, Diamatine, Void, Emeradic, Enori));
 
         ignoredItems.put(Enori, new OrePrefix[]{gem, block});
@@ -155,7 +178,9 @@ public class GFTMaterials {
         ignoredItems.put(Palis, new OrePrefix[]{gem, block});
         ignoredItems.put(Restonia, new OrePrefix[]{gem, block});
         ignoredItems.put(Void, new OrePrefix[]{gem, block});
-        //ignoredItems.put(Materials.Electrotine, new OrePrefix[]{dust, ingot});
+        ignoredItems.put(Fluix, new OrePrefix[]{block});
+        ignoredItems.put(Lunarite, new OrePrefix[]{gem});
+        ignoredItems.put(Materials.Electrotine, new OrePrefix[]{dust, ingot});
 
         for (Map.Entry<Material, OrePrefix[]> entry : ignoredItems.entrySet()) {
             Material material = entry.getKey();

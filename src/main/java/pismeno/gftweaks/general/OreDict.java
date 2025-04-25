@@ -2,6 +2,7 @@ package pismeno.gftweaks.general;
 
 import de.ellpeck.actuallyadditions.mod.blocks.InitBlocks;
 import de.ellpeck.actuallyadditions.mod.items.InitItems;
+import micdoodle8.mods.galacticraft.core.GCItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -20,5 +21,8 @@ public class OreDict {
         OreDictionary.registerOre("blockVoid", new ItemStack(InitBlocks.blockCrystal, 1, 3));
         OreDictionary.registerOre("blockEmeradic", new ItemStack(InitBlocks.blockCrystal, 1, 4));
         OreDictionary.registerOre("blockEnori", new ItemStack(InitBlocks.blockCrystal, 1, 5));
+
+        OreDictionary.registerOre("gemLunarite", new ItemStack(GCItems.itemBasicMoon, 1, 2));
+        OreDictionary.registerOre("gem", new ItemStack(GCItems.itemBasicMoon, 1, 2));
     }
 }

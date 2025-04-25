@@ -21,7 +21,6 @@ public class MaterialModifications {
 
 
         Silicon.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
-        CertusQuartz.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
         BlueAlloy.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
         Graphene.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
         BlackSteel.addFlags(MaterialFlags.GENERATE_LONG_ROD, MaterialFlags.GENERATE_RING);

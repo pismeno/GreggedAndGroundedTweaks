@@ -19,6 +19,7 @@ import pismeno.gftweaks.common.recipes.CraftingRecipes;
 import pismeno.gftweaks.common.recipes.MetaItemHandler;
 import pismeno.gftweaks.common.recipes.MachineRecipes;
 import pismeno.gftweaks.galacticraft.TradeListEditor;
+import pismeno.gftweaks.galacticraft.WorkbenchRecipes;
 import pismeno.gftweaks.general.OreDict;
 import pismeno.gftweaks.gregtech.GFTMaterials;
 import pismeno.gftweaks.gregtech.GFTOrePrefix;
@@ -68,6 +69,7 @@ public class CommonProxy {
     public static void onRecipeRegistrationLate(RegistryEvent.Register<IRecipe> event) {
         CraftingRecipes.init();
         MachineRecipes.init();
+        WorkbenchRecipes.init();
     }
 
     @SubscribeEvent

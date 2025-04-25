@@ -64,6 +64,10 @@ item.gftweaks.processing_chipset.name=Processing Chipset
 item.gftweaks.computing_chipset.name=Computing Chipset
 item.gftweaks.graphic_chipset.name=Graphic Chipset
 item.gftweaks.logic_chipset.name=Logic Chipset
+item.gftweaks.control_chipset.name=Control Chipset
+item.gftweaks.central_chipset.name=Central Chipset
+item.gftweaks.applicating_chipset.name=Applicating Chipset
+item.gftweaks.lapotronic_chipset.name=Lapotronic Chipset
 
 gftweaks.material.ardite=Ardite
 gftweaks.material.manyullyn=Manyullyn
@@ -81,6 +85,7 @@ gftweaks.material.enhanced_glue=Enhanced Glue
 gftweaks.material.taenite=Taenite
 gftweaks.material.kemacite=Kemacite
 gftweaks.material.cobardite=Cobardite
+gftweaks.material.lunarite=Lunarite
 
 gftweaks.machine.steam_saw_bronze.name=Steam Saw
 gftweaks.machine.steam_saw_steel.name=High Pressure Steam Saw

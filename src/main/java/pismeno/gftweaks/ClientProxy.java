@@ -48,7 +48,6 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void openGui(GuiOpenEvent event) {
-        GfTweaks.LOGGER.info("Opened Gui");
-        GFTGuiWorldSelection.init(event);
+        //GFTGuiWorldSelection.init(event);
     }
 }

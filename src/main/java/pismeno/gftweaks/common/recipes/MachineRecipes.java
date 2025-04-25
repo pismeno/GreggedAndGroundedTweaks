@@ -5,8 +5,11 @@ import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.category.RecipeCategories;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.material.MarkerMaterials.Component;
 import gregtech.api.unification.material.MarkerMaterials.Color;
 import gregtech.api.unification.material.Material;
@@ -17,6 +20,7 @@ import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import pismeno.gftweaks.gregtech.GFTMaterials;
 import pismeno.gftweaks.gregtech.GFTOrePrefix;
@@ -43,8 +47,83 @@ public class MachineRecipes {
     }
 
     private static void addGeneric() {
-        addImplosionRecipe(HEAVY_DUTY_COMPOSITE, COMPRESSED_HEAVY_DUTY_COMPOSITE, 8);
-        addImplosionRecipe(HEAVY_DUTY_COMPOSITE2, COMPRESSED_HEAVY_DUTY_COMPOSITE2, 8);
+        addImplosionRecipe(new ItemStack(HEAVY_DUTY_COMPOSITE), new ItemStack(COMPRESSED_HEAVY_DUTY_COMPOSITE), 8);
+        addImplosionRecipe(new ItemStack(HEAVY_DUTY_COMPOSITE2), new ItemStack(COMPRESSED_HEAVY_DUTY_COMPOSITE2), 8);
+        addImplosionRecipe(OreDictUnifier.get(OrePrefix.dust, GFTMaterials.FluixPearl, 9), getItemStack("appliedenergistics2:material", 9, 1), 8);
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(1024).duration(500)
+                .input(EXTREME_CIRCUIT_BOARD)
+                .input(POWER_INTEGRATED_CIRCUIT, 4)
+                .input(LAPOTRONIC_CHIPSET, 24)
+                .input(NANO_CENTRAL_PROCESSING_UNIT, 2)
+                .input(OrePrefix.wireFine, Materials.Platinum, 16)
+                .input(OrePrefix.plate, Materials.Platinum, 8)
+                .output(ENERGY_LAPOTRONIC_ORB)
+                .solderMultiplier(2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(60)
+                .inputs(getItemStack("appliedenergistics2:material", 22, 1))
+                .input(OrePrefix.circuit, Tier.EV)
+                .input(CENTRAL_CHIPSET)
+                .outputs(getItemStack("appliedenergistics2:material", 43, 1))
+                .solderMultiplier(1)
+                .circuitMeta(1)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .EUt(600).duration(60)
+                .inputs(getItemStack("appliedenergistics2:material", 22, 1))
+                .input(OrePrefix.circuit, Tier.EV)
+                .input(CENTRAL_CHIPSET)
+                .outputs(getItemStack("appliedenergistics2:material", 44, 1))
+                .solderMultiplier(1)
+                .circuitMeta(32)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+
+        MIXER_RECIPES.recipeBuilder()
+                .EUt(VA[EV]).duration(500)
+                .input(OrePrefix.dust, Materials.EnderPearl)
+                .input(OrePrefix.dust, GFTMaterials.Fluix, 8)
+                .output(OrePrefix.dust, GFTMaterials.FluixPearl, 9)
+                .buildAndRegister();
+
+
+        MACERATOR_RECIPES.recipeBuilder()
+                .EUt(2).duration(18)
+                .inputs(getItemStack("appliedenergistics2:material", 7, 1))
+                .output(OrePrefix.dust, GFTMaterials.Fluix)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder()
+                .EUt(2).duration(18)
+                .inputs(getItemStack("appliedenergistics2:material", 9, 1))
+                .output(OrePrefix.dust, GFTMaterials.FluixPearl, 9)
+                .category(RecipeCategories.MACERATOR_RECYCLING)
+                .buildAndRegister();
+
+
+        AUTOCLAVE_RECIPES.recipeBuilder()
+                .EUt(VA[HV]).duration(1200)
+                .input(OrePrefix.dust,GFTMaterials.Fluix)
+                .fluidInputs(Materials.Water.getFluid(250))
+                .outputs(getItemStack("appliedenergistics2:material", 7, 1))
+                .buildAndRegister();
+
+        AUTOCLAVE_RECIPES.recipeBuilder()
+                .EUt(VA[HV]).duration(600)
+                .input(OrePrefix.dust,GFTMaterials.Fluix)
+                .fluidInputs(Materials.DistilledWater.getFluid(50))
+                .outputs(getItemStack("appliedenergistics2:material", 7, 1))
+                .buildAndRegister();
+
 
         COMPRESSOR_RECIPES.recipeBuilder()
                 .EUt(VA[EV]).duration(1200)
@@ -52,9 +131,30 @@ public class MachineRecipes {
                 .output(AsteroidsItems.basicItem, 1, 5)
                 .buildAndRegister();
 
-//        LASER_ENGRAVER_RECIPES.recipeBuilder()
-//                        .EUt(VA[EV]).duration(400)
-//                        .input(HEAVY_DUTY_COMPOSITE3)
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                        .EUt(VA[EV]).duration(400)
+                        .inputs(getItemStack("appliedenergistics2:material", 20, 1))
+                        .inputs(getItemStack("appliedenergistics2:material", 16, 1))
+                        .outputs(getItemStack("appliedenergistics2:material", 23, 1))
+                        .cleanroom(CleanroomType.CLEANROOM)
+                        .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .EUt(VA[EV]).duration(400)
+                .inputs(getItemStack("appliedenergistics2:material", 20, 1))
+                .inputs(getItemStack("appliedenergistics2:material", 18, 1))
+                .outputs(getItemStack("appliedenergistics2:material", 22, 1))
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .EUt(VA[EV]).duration(400)
+                .inputs(getItemStack("appliedenergistics2:material", 20, 1))
+                .inputs(getItemStack("appliedenergistics2:material", 17, 1))
+                .outputs(getItemStack("appliedenergistics2:material", 24, 1))
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
 
         LASER_FABRICATOR_RECIPES.recipeBuilder()
                 .EUt(480).duration(1200)
@@ -65,16 +165,6 @@ public class MachineRecipes {
                 .output(NANO_CENTRAL_PROCESSING_UNIT_WAFER)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
-
-//        LASER_FABRICATOR_RECIPES.recipeBuilder()
-//                .EUt(480).duration(200)
-//                .notConsumable(getItemStack("appliedenergistics2:material", 19, 1))
-//                .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
-//                .input(OrePrefix.plateDouble, Materials.Silicon, 3)
-//                .input(APPLICATING_CHIPSET)
-//                .outputs(getItemStack("appliedenergistics2:material", 20, 1))
-//                .cleanroom(CleanroomType.CLEANROOM)
-//                .buildAndRegister();
 
         LASER_FABRICATOR_RECIPES.recipeBuilder()
                 .notConsumable(getItemStack("appliedenergistics2:material", 15, 1))
@@ -90,7 +180,7 @@ public class MachineRecipes {
         LASER_FABRICATOR_RECIPES.recipeBuilder()
                 .notConsumable(getItemStack("appliedenergistics2:material", 13, 1))
                 .EUt(480).duration(300)
-                .input(OrePrefix.plateDouble, Materials.CertusQuartz, 2)
+                .input(OrePrefix.plate, Materials.CertusQuartz, 4)
                 .input(OrePrefix.circuit, MarkerMaterials.Tier.EV)
                 .input(COMPUTING_CHIPSET)
                 .input(APPLICATING_CHIPSET)
@@ -344,15 +434,45 @@ public class MachineRecipes {
                 .duration(300).EUt(VA[EV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipEngraved, GFTMaterials.Restonia)
+                .input(OrePrefix.wireFine, Materials.RedAlloy, 12)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Enori)
+                .output(APPLICATING_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipEngraved, Materials.Lapotron)
+                .input(OrePrefix.wireFine, Materials.Electrum, 12)
+                .notConsumable(OrePrefix.lens, Materials.Lapotron)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Enori)
+                .output(LAPOTRONIC_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
     }
 
     public static void registerChipsRecipes() {
-        addRawChipRecipe(Materials.Amethyst, true);
-        addRawChipRecipe(GFTMaterials.Enori, true);
-        addRawChipRecipe(Materials.GarnetYellow, true);
-        addRawChipRecipe(Materials.Diamond, true);
-        addRawChipRecipe(GFTMaterials.Restonia, false);
-        addRawChipRecipe(GFTMaterials.Void, false);
+        addRawChipRecipe(Materials.Amethyst, true, 350);
+        addRawChipRecipe(GFTMaterials.Enori, true, 350);
+        addRawChipRecipe(Materials.GarnetYellow, true, 350);
+        addRawChipRecipe(Materials.Diamond, true, 350);
+        addRawChipRecipe(GFTMaterials.Restonia, false, 350);
+        addRawChipRecipe(GFTMaterials.Void, false, 350);
+        addRawChipRecipe(GFTMaterials.Restonia, false, 480);
+
+        AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(OrePrefix.gem, Materials.Lapotron)
+                .fluidInputs(Materials.Argon.getFluid(100))
+                .output(GFTOrePrefix.chipRaw, Materials.Lapotron)
+                .duration(800).EUt(1200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(GFTOrePrefix.chipRaw, GFTMaterials.Enori)
@@ -407,6 +527,22 @@ public class MachineRecipes {
                 .notConsumable(OrePrefix.lens, GFTMaterials.Void)
                 .output(GFTOrePrefix.chipEngraved, GFTMaterials.Void)
                 .duration(400).EUt(240)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipRaw, GFTMaterials.Restonia)
+                .notConsumable(OrePrefix.lens, GFTMaterials.Restonia)
+                .output(GFTOrePrefix.chipEngraved, GFTMaterials.Restonia)
+                .duration(400).EUt(1200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GFTOrePrefix.chipRaw, Materials.Lapotron)
+                .notConsumable(OrePrefix.craftingLens, Color.Blue)
+                .output(GFTOrePrefix.chipEngraved, Materials.Lapotron)
+                .duration(400).EUt(1200)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
     }
@@ -469,13 +605,13 @@ public class MachineRecipes {
         }
     }
 
-    private static void addRawChipRecipe(Material material, boolean doAddHydrogenVersion) {
+    private static void addRawChipRecipe(Material material, boolean doAddHydrogenVersion, int EUt) {
         if (doAddHydrogenVersion) {
             AUTOCLAVE_RECIPES.recipeBuilder()
                     .input(OrePrefix.gemExquisite, material)
                     .fluidInputs(Materials.Hydrogen.getFluid(1000))
                     .output(GFTOrePrefix.chipRaw, material)
-                    .duration(900).EUt(320)
+                    .duration(900).EUt(EUt)
                     .cleanroom(CleanroomType.CLEANROOM)
                     .buildAndRegister();
         }
@@ -484,36 +620,42 @@ public class MachineRecipes {
                 .input(OrePrefix.gemExquisite, material)
                 .fluidInputs(Materials.Argon.getFluid(100))
                 .output(GFTOrePrefix.chipRaw, material)
-                .duration(800).EUt(280)
+                .duration(800).EUt((int) (EUt * 0.8))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
     }
 
-    private static void addImplosionRecipe(Item input, Item output, int explosives) {
+    private static void addImplosionRecipe(ItemStack input, ItemStack output, int explosives) {
+
+
         IMPLOSION_RECIPES.recipeBuilder()
-                .input(input)
-                .output(output)
+                .inputs(input)
+                .outputs(output)
+                .chancedOutput(OrePrefix.dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.POWDERBARREL, explosives))
                 .duration(20).EUt(896)
                 .buildAndRegister();
 
         IMPLOSION_RECIPES.recipeBuilder()
-                .input(input)
-                .output(output)
+                .inputs(input)
+                .outputs(output)
+                .chancedOutput(OrePrefix.dust, Materials.DarkAsh, 2500, 0)
                 .explosivesAmount(explosives / 2)
                 .duration(20).EUt(896)
                 .buildAndRegister();
 
         IMPLOSION_RECIPES.recipeBuilder()
-                .input(input)
-                .output(output)
+                .inputs(input)
+                .outputs(output)
+                .chancedOutput(OrePrefix.dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(DYNAMITE.getStackForm(explosives / 4))
                 .duration(20).EUt(896)
                 .buildAndRegister();
 
         IMPLOSION_RECIPES.recipeBuilder()
-                .input(input)
-                .output(output)
+                .inputs(input)
+                .outputs(output)
+                .chancedOutput(OrePrefix.dust, Materials.DarkAsh, 2500, 0)
                 .explosivesType(new ItemStack(MetaBlocks.ITNT))
                 .duration(20).EUt(896)
                 .buildAndRegister();

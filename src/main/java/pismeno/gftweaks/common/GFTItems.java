@@ -53,6 +53,7 @@ public class GFTItems {
     public static Item CONTROL_CHIPSET;
     public static Item CENTRAL_CHIPSET;
     public static Item APPLICATING_CHIPSET;
+    public static Item LAPOTRONIC_CHIPSET;
 
     public static void init() {
         PLAN_TIER2 = new ItemPlan("tier2");
@@ -94,7 +95,8 @@ public class GFTItems {
         LOGIC_CHIPSET = new ItemGeneric("logic_chipset");
         CONTROL_CHIPSET = new ItemGeneric("control_chipset");
         CENTRAL_CHIPSET = new ItemGeneric("central_chipset");
-        APPLICATING_CHIPSET= new ItemGeneric("applicating_chipset");
+        APPLICATING_CHIPSET = new ItemGeneric("applicating_chipset");
+        LAPOTRONIC_CHIPSET = new ItemGeneric("lapotronic_chipset");
     }
 
     public static void registerModels() {
@@ -109,8 +111,6 @@ public class GFTItems {
     public static void registerItems(RegistryEvent.Register<Item> event){
         for (Item item : ITEMS) {
             event.getRegistry().register(item);
-            GfTweaks.LOGGER.info("Registered item " + item.getRegistryName());
         }
-        GfTweaks.LOGGER.info("Registered " + ITEMS.size() + " items");
     }
 }

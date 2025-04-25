@@ -24,5 +24,5 @@ public class GFTRecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> LASER_FABRICATOR_RECIPES = new RecipeMap<>("laser_fabricator", 9, 1, 0, 0,
             new SimpleRecipeBuilder().duration(400).EUt(480), false)
             .setSound(GTSoundEvents.ELECTROLYZER)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.VERTICAL);
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.VERTICAL_DOWNWARDS);
 }

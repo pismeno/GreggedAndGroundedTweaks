@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gagtweaks:blocks/nitanite_crystal_block_empowered"
+  }
+}

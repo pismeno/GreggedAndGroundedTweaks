@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gagtweaks:blocks/peccorite_crystal_block"
+  }
+}

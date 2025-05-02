@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gagtweaks:items/heavy_duty_composite4"
+  }
+}

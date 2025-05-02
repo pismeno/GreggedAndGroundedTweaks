@@ -1,6 +1,6 @@
 {
   "package": "pismeno.gagtweaks.mixins",
-  "refmap": "mixins.gftweaks.refmap.json",
+  "refmap": "mixins.gagtweaks.refmap.json",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",

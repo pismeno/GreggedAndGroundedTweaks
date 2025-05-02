@@ -51,4 +51,6 @@ dependencies {
     implementation "curse.maven:mixinbootstrap-357178:3437402"
     implementation "curse.maven:actually-additions-228404:3117927"
     implementation "curse.maven:open-terrain-generator-265894:5286210"
+    implementation "curse.maven:gregtech-food-option-477021:6472136"
+    //implementation "curse.maven:totemic-237541:4111310"
 }

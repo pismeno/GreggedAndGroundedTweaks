@@ -1,0 +1,14 @@
+{
+  "package": "pismeno.gagtweaks.mixins.late",
+  "refmap": "mixins.gagtweaks.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": ["MixinBlockBasicCallisto", "MixinBlockBasicCeres", "MixinBlockBasicDeimos", "MixinBlockBasicEris",
+    "MixinBlockBasicEuropa", "MixinBlockBasicGanymede", "MixinBlockBasicIo", "MixinBlockBasicJupiter", "MixinBlockBasicIapetus",
+    "MixinBlockBasicKepler22b", "MixinBlockBasicMercury", "MixinBlockBasicNeptune", "MixinBlockBasicOberon",
+    "MixinBlockBasicPluto", "MixinBlockBasicUranus", "MixinBlockBasicTriton", "MixinBlockBasicTitania", "MixinBlockBasicSaturn",
+    "MixinBlockBasicRhea", "MixinBlockBasicPhobos", "MixinBlockBasicTitan"],
+  "client": [],
+  "server": []
+}

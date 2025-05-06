@@ -64,6 +64,24 @@ public class GAGOrePrefix {
     public static final OrePrefix oreEuropaRock = new OrePrefix("oreEuropaRock", -1, null, MaterialIconType.ore,
             ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
 
+    public static final OrePrefix oreCallistoRock = new OrePrefix("oreCallistoRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreIoRock = new OrePrefix("oreIoRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreGanymedeRock = new OrePrefix("oreGanymedeRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreRheaRock = new OrePrefix("oreRheaRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreTitanRock = new OrePrefix("oreTitanRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
+    public static final OrePrefix oreIapetusRock = new OrePrefix("oreIapetusRock", -1, null, MaterialIconType.ore,
+            ENABLE_UNIFICATION, OrePrefix.Conditions.hasOreProperty);
+
     private GAGOrePrefix() {}
 
     private static OrePrefix prefix(String name, long materialAmount, Material material, MaterialIconType icon, long flags, Predicate<Material> condition) {

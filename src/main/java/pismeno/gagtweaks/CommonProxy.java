@@ -13,8 +13,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.Mixins;
 import pismeno.gagtweaks.common.GAGBlocks;
 import pismeno.gagtweaks.common.GAGItems;
+import pismeno.gagtweaks.common.recipes.AtmosphereRecipes;
 import pismeno.gagtweaks.common.recipes.CraftingRecipes;
 import pismeno.gagtweaks.common.recipes.MetaItemHandler;
 import pismeno.gagtweaks.common.recipes.MachineRecipes;
@@ -32,6 +35,8 @@ import pismeno.gagtweaks.tconstruct.GAGTcMaterials;
 @Mod.EventBusSubscriber(modid = Tags.MODID)
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
+        MixinBootstrap.init();
+        Mixins.addConfiguration("mixins.gagtweaks.late.json");
         GAGTcMaterials.preInit();
         GAGBlocks.init();
         GAGItems.init();
@@ -63,6 +68,7 @@ public class CommonProxy {
     @SubscribeEvent
     public static void onRecipeRegistration(RegistryEvent.Register<IRecipe> event) {
         MetaItemHandler.init();
+        AtmosphereRecipes.init();
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

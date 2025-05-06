@@ -45,6 +45,7 @@ public class GAGItems {
     public static Item COMPRESSED_HEAVY_DUTY_COMPOSITE2;
     public static Item HEAVY_DUTY_COMPOSITE3;
     public static Item HEAVY_DUTY_COMPOSITE4;
+    public static Item HEAVY_DUTY_COMPOSITE5;
 
     public static Item GRAVEL_STRAINER;
 
@@ -62,6 +63,8 @@ public class GAGItems {
     public static Item ADAPTIVE_CHIPSET;
     public static Item ADVANCED_CHIPSET;
     public static Item BETTER_CHIPSET;
+    public static Item EXPERT_CHIPSET;
+    public static Item ELITE_CHIPSET;
 
     public static void init() {
         PLAN_TIER2 = new ItemPlan("tier2");
@@ -97,6 +100,7 @@ public class GAGItems {
         COMPRESSED_HEAVY_DUTY_COMPOSITE2 = new ItemHeavyDuty("compressed_heavy_duty_composite2");
         HEAVY_DUTY_COMPOSITE3 = new ItemHeavyDuty("heavy_duty_composite3");
         HEAVY_DUTY_COMPOSITE4 = new ItemHeavyDuty("heavy_duty_composite4");
+        HEAVY_DUTY_COMPOSITE5 = new ItemHeavyDuty("heavy_duty_composite5");
 
         GRAVEL_STRAINER = new ItemGravelStrainer("gravel_strainer");
 
@@ -114,6 +118,8 @@ public class GAGItems {
         ADAPTIVE_CHIPSET = new ItemGeneric("adaptive_chipset");
         ADVANCED_CHIPSET = new ItemGeneric("advanced_chipset");
         BETTER_CHIPSET = new ItemGeneric("better_chipset");
+        EXPERT_CHIPSET = new ItemGeneric("expert_chipset");
+        ELITE_CHIPSET = new ItemGeneric("elite_chipset");
     }
 
     public static void registerModels() {

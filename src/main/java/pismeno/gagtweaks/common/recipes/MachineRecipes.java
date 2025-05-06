@@ -157,6 +157,13 @@ public class MachineRecipes {
                 .output(ExtraPlanets_Items.TIER_4_ITEMS, 1, 3)
                 .buildAndRegister();
 
+        COMPRESSOR_RECIPES.recipeBuilder()
+                .EUt(VA[IV]).duration(2400)
+                .input(HEAVY_DUTY_COMPOSITE5)
+                .output(ExtraPlanets_Items.TIER_5_ITEMS, 1, 3)
+                .buildAndRegister();
+
+
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                         .EUt(VA[EV]).duration(400)
@@ -186,7 +193,15 @@ public class MachineRecipes {
                 .input(PECCORITE_CRYSTAL_EMPOWERED, 2)
                 .notConsumable(OrePrefix.craftingLens, Color.White)
                 .output(OrePrefix.gemFlawless, GAGMaterials.Peccorite)
-                .duration(240).EUt(VA[HV])
+                .duration(240).EUt(480)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(NITANITE_CRYSTAL_EMPOWERED, 2)
+                .notConsumable(OrePrefix.craftingLens, Color.White)
+                .output(OrePrefix.gemFlawless, GAGMaterials.Nitanite)
+                .duration(240).EUt(480)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
@@ -641,19 +656,41 @@ public class MachineRecipes {
                 .duration(300).EUt(VA[EV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipEngraved, GAGMaterials.Emeradic)
+                .input(OrePrefix.wireFine, Materials.YttriumBariumCuprate, 12)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Emeradic)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Void)
+                .output(EXPERT_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipEngraved, GAGMaterials.Nitanite)
+                .input(OrePrefix.wireFine, Materials.YttriumBariumCuprate, 12)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Nitanite)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Void)
+                .output(ELITE_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
     }
 
     public static void registerChipsRecipes() {
-        addRawChipRecipe(Materials.Amethyst, true, 350);
-        addRawChipRecipe(GAGMaterials.Enori, true, 350);
-        addRawChipRecipe(Materials.GarnetYellow, true, 350);
-        addRawChipRecipe(Materials.Diamond, true, 350);
-        addRawChipRecipe(GAGMaterials.Restonia, false, 350);
-        addRawChipRecipe(GAGMaterials.Void, false, 350);
-        addRawChipRecipe(GAGMaterials.Restonia, false, 480);
-        addRawChipRecipe(GAGMaterials.Palis, false, 1200);
-        addRawChipRecipe(GAGMaterials.Peccorite, false, 1200);
-        addRawChipRecipe(GAGMaterials.Diamatine, false, 6000);
+        addRawChipRecipe(Materials.Amethyst, 0, 350);
+        addRawChipRecipe(GAGMaterials.Enori, 0, 350);
+        addRawChipRecipe(Materials.GarnetYellow, 0, 350);
+        addRawChipRecipe(Materials.Diamond, 0, 350);
+        addRawChipRecipe(GAGMaterials.Restonia, 1, 350);
+        addRawChipRecipe(GAGMaterials.Void, 1, 350);
+        addRawChipRecipe(GAGMaterials.Restonia, 1, 480);
+        addRawChipRecipe(GAGMaterials.Palis, 1, 1200);
+        addRawChipRecipe(GAGMaterials.Peccorite, 1, 1200);
+        addRawChipRecipe(GAGMaterials.Diamatine, 1, 6000);
+        addRawChipRecipe(GAGMaterials.Emeradic, 2, 10000);
+        addRawChipRecipe(GAGMaterials.Nitanite, 2, 10000);
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(OrePrefix.gem, Materials.Lapotron)
@@ -753,6 +790,22 @@ public class MachineRecipes {
                 .buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipRaw, GAGMaterials.Nitanite)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Nitanite)
+                .output(GAGOrePrefix.chipEngraved, GAGMaterials.Nitanite)
+                .duration(400).EUt(6000)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipRaw, GAGMaterials.Emeradic)
+                .notConsumable(OrePrefix.lens, GAGMaterials.Emeradic)
+                .output(GAGOrePrefix.chipEngraved, GAGMaterials.Emeradic)
+                .duration(400).EUt(6000)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(GAGOrePrefix.chipRaw, GAGMaterials.Diamatine)
                 .notConsumable(OrePrefix.lens, GAGMaterials.Diamatine)
                 .output(GAGOrePrefix.chipEngraved, GAGMaterials.Diamatine)
@@ -819,8 +872,8 @@ public class MachineRecipes {
         }
     }
 
-    private static void addRawChipRecipe(Material material, boolean doAddHydrogenVersion, int EUt) {
-        if (doAddHydrogenVersion) {
+    private static void addRawChipRecipe(Material material, int fluidTier, int EUt) {
+        if (fluidTier < 1) {
             AUTOCLAVE_RECIPES.recipeBuilder()
                     .input(OrePrefix.gemExquisite, material)
                     .fluidInputs(Materials.Hydrogen.getFluid(1000))
@@ -830,13 +883,25 @@ public class MachineRecipes {
                     .buildAndRegister();
         }
 
-        AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(OrePrefix.gemExquisite, material)
-                .fluidInputs(Materials.Argon.getFluid(100))
-                .output(GAGOrePrefix.chipRaw, material)
-                .duration(800).EUt((int) (EUt * 0.8))
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
+        if (fluidTier < 2) {
+            AUTOCLAVE_RECIPES.recipeBuilder()
+                    .input(OrePrefix.gemExquisite, material)
+                    .fluidInputs(Materials.Argon.getFluid(100))
+                    .output(GAGOrePrefix.chipRaw, material)
+                    .duration(800).EUt((int) (EUt * 0.8))
+                    .cleanroom(CleanroomType.CLEANROOM)
+                    .buildAndRegister();
+        }
+
+        if (fluidTier < 3) {
+            AUTOCLAVE_RECIPES.recipeBuilder()
+                    .input(OrePrefix.gemExquisite, material)
+                    .fluidInputs(Materials.Europium.getFluid(16))
+                    .output(GAGOrePrefix.chipRaw, material)
+                    .duration(700).EUt((int) (EUt * 0.6))
+                    .cleanroom(CleanroomType.CLEANROOM)
+                    .buildAndRegister();
+        }
     }
 
     private static void addImplosionRecipe(ItemStack input, ItemStack output, int explosives) {

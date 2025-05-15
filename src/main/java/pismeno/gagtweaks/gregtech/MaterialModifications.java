@@ -21,6 +21,7 @@ public class MaterialModifications {
 
         Silicon.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
         HSSE.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
+        Tritanium.addFlags(MaterialFlags.GENERATE_DOUBLE_PLATE);
         BlueAlloy.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
         Graphene.addFlags(MaterialFlags.GENERATE_FINE_WIRE);
         BlackSteel.addFlags(MaterialFlags.GENERATE_LONG_ROD, MaterialFlags.GENERATE_RING);
@@ -30,6 +31,7 @@ public class MaterialModifications {
         Amethyst.addFlags(GAGMaterialFlags.GENERATE_CHIPS);
         Lapotron.addFlags(GAGMaterialFlags.GENERATE_CHIPS);
         Emerald.addFlags(GAGMaterialFlags.GENERATE_CHIPS);
+        Olivine.addFlags(GAGMaterialFlags.GENERATE_CHIPS);
 
         Manyullyn.addFlags(MaterialFlags.GENERATE_FOIL);
         Copper.addFlags(MaterialFlags.GENERATE_FOIL);
@@ -37,6 +39,7 @@ public class MaterialModifications {
         Steel.addFlags(MaterialFlags.GENERATE_FOIL);
         Bronze.addFlags(MaterialFlags.GENERATE_FOIL);
         Iron.addFlags(MaterialFlags.GENERATE_FOIL);
+        RhodiumPlatedPalladium.addFlags(MaterialFlags.GENERATE_FOIL);
 
         CobaltBrass.addFlags(GAGMaterialFlags.GENERATE_CUTTING_BLADE);
         VanadiumSteel.addFlags(GAGMaterialFlags.GENERATE_CUTTING_BLADE);

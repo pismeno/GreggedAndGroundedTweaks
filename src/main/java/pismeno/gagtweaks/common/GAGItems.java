@@ -46,6 +46,10 @@ public class GAGItems {
     public static Item HEAVY_DUTY_COMPOSITE3;
     public static Item HEAVY_DUTY_COMPOSITE4;
     public static Item HEAVY_DUTY_COMPOSITE5;
+    public static Item HEAVY_DUTY_COMPOSITE6;
+    public static Item HEAVY_DUTY_COMPOSITE7;
+    public static Item HEAVY_DUTY_COMPOSITE8;
+    public static Item HEAVY_DUTY_COMPOSITE9;
 
     public static Item GRAVEL_STRAINER;
 
@@ -65,6 +69,13 @@ public class GAGItems {
     public static Item BETTER_CHIPSET;
     public static Item EXPERT_CHIPSET;
     public static Item ELITE_CHIPSET;
+    public static Item CRYSTAL_CHIPSET;
+
+    public static Item ENGRAVED_CRYSTAL_CHIPSET;
+
+    public static Item UNBAKED_CORN_BREAD;
+    public static Item UNBAKED_RICE_BREAD;
+    public static Item UNBAKED_BAGUETTE;
 
     public static void init() {
         PLAN_TIER2 = new ItemPlan("tier2");
@@ -101,6 +112,10 @@ public class GAGItems {
         HEAVY_DUTY_COMPOSITE3 = new ItemHeavyDuty("heavy_duty_composite3");
         HEAVY_DUTY_COMPOSITE4 = new ItemHeavyDuty("heavy_duty_composite4");
         HEAVY_DUTY_COMPOSITE5 = new ItemHeavyDuty("heavy_duty_composite5");
+        HEAVY_DUTY_COMPOSITE6 = new ItemHeavyDuty("heavy_duty_composite6");
+        HEAVY_DUTY_COMPOSITE7 = new ItemHeavyDuty("heavy_duty_composite7");
+        HEAVY_DUTY_COMPOSITE8 = new ItemHeavyDuty("heavy_duty_composite8");
+        HEAVY_DUTY_COMPOSITE9 = new ItemHeavyDuty("heavy_duty_composite9");
 
         GRAVEL_STRAINER = new ItemGravelStrainer("gravel_strainer");
 
@@ -120,6 +135,13 @@ public class GAGItems {
         BETTER_CHIPSET = new ItemGeneric("better_chipset");
         EXPERT_CHIPSET = new ItemGeneric("expert_chipset");
         ELITE_CHIPSET = new ItemGeneric("elite_chipset");
+        CRYSTAL_CHIPSET = new ItemGeneric("crystal_chipset");
+
+        ENGRAVED_CRYSTAL_CHIPSET = new ItemGeneric("engraved_crystal_chipset");
+
+        UNBAKED_RICE_BREAD = new ItemGeneric("unbaked_rice_bread");
+        UNBAKED_CORN_BREAD = new ItemGeneric("unbaked_corn_bread");
+        UNBAKED_BAGUETTE = new ItemGeneric("unbaked_baguette");
     }
 
     public static void registerModels() {

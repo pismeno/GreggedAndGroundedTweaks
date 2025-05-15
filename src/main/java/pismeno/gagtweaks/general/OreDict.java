@@ -2,6 +2,7 @@ package pismeno.gagtweaks.general;
 
 import de.ellpeck.actuallyadditions.mod.blocks.InitBlocks;
 import de.ellpeck.actuallyadditions.mod.items.InitItems;
+import micdoodle8.mods.galacticraft.core.GCBlocks;
 import micdoodle8.mods.galacticraft.core.GCItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -28,5 +29,7 @@ public class OreDict {
 
         OreDictionary.registerOre("gemLunarite", new ItemStack(GCItems.itemBasicMoon, 1, 2));
         OreDictionary.registerOre("gem", new ItemStack(GCItems.itemBasicMoon, 1, 2));
+
+        OreDictionary.registerOre("blockMeteoricIron", new ItemStack(GCBlocks.basicBlock, 1, 12));
     }
 }

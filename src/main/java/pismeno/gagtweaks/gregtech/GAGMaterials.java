@@ -2,12 +2,15 @@ package pismeno.gagtweaks.gregtech;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.util.ResourceLocation;
 import pismeno.gagtweaks.Tags;
 
 import java.util.*;
 
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
@@ -77,6 +80,7 @@ public class GAGMaterials {
     public static Material Restonia;
     public static Material Void;
     public static Material CornFlour;
+    public static Material RiceFlour;
     public static Material QuartzBlack;
     public static Material Inconel;
     public static Material Kemacite;
@@ -87,6 +91,8 @@ public class GAGMaterials {
     public static Material Lunarite;
     public static Material Peccorite;
     public static Material Nitanite;
+    public static Material MeteoricIron;
+    public static Material Tiamant;
 
     public static final List<Material> AAMaterials = new ArrayList<>();
 
@@ -496,14 +502,14 @@ public class GAGMaterials {
                 .gem()
                 .ore()
                 .color(0x121212).iconSet(QUARTZ)
-                .flags(GENERATE_PLATE, GENERATE_ROD, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING)
+                .flags(GENERATE_PLATE, GENERATE_ROD, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING, GENERATE_CHIPS)
                 .build();
 
         Inconel = new Material.Builder(32011, new ResourceLocation(Tags.MODID, "inconel"))
                 .ingot()
                 .color(0xa0a6a8).iconSet(METALLIC)
                 .flags(GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE, NO_SMELTING, GENERATE_DOUBLE_PLATE)
-                .blast(2537)
+                .blast(b -> b.temp(2537, BlastProperty.GasTier.LOW).blastStats(VA[HV], 1700))
                 .components(Nickel, 6, Chrome, 2, Cobalt, 1, Molybdenum, 1)
                 .build();
 
@@ -566,6 +572,24 @@ public class GAGMaterials {
                         EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
                 .build();
 
+        MeteoricIron = new Material.Builder(32020, new ResourceLocation(Tags.MODID, "meteoric_iron"))
+                .ingot()
+                .color(0x8B7E70).iconSet(METALLIC)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE)
+                .build();
+
+        RiceFlour = new Material.Builder(32021, new ResourceLocation(Tags.MODID, "rice_flour"))
+                .dust()
+                .color(0xCEC8B0).iconSet(FINE)
+                .build();
+
+        Tiamant = new Material.Builder(32022, new ResourceLocation(Tags.MODID, "tiamant"))
+                .gem()
+                .ore()
+                .color(0x0778F2).iconSet(DIAMOND)
+                .flags(NO_SMELTING, GENERATE_CHIPS)
+                .build();
+
         AAMaterials.addAll(Arrays.asList(Restonia, Palis, Diamatine, Void, Emeradic, Enori));
 
         ignoredItems.put(Enori, new OrePrefix[]{gem, block});
@@ -578,6 +602,7 @@ public class GAGMaterials {
         ignoredItems.put(Nitanite, new OrePrefix[]{gem, block});
         ignoredItems.put(Fluix, new OrePrefix[]{block});
         ignoredItems.put(Lunarite, new OrePrefix[]{gem});
+        ignoredItems.put(MeteoricIron, new OrePrefix[]{ingot, block});
         //ignoredItems.put(Electrotine, new OrePrefix[]{dust, ingot});
 
         for (Map.Entry<Material, OrePrefix[]> entry : ignoredItems.entrySet()) {

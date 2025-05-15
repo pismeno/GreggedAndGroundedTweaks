@@ -50,7 +50,7 @@ dependencies {
     implementation "curse.maven:gregs-tinkering-1233535:6381677"
     implementation "curse.maven:mixinbootstrap-357178:3437402"
     implementation "curse.maven:actually-additions-228404:3117927"
-    implementation "curse.maven:open-terrain-generator-265894:5286210"
     implementation "curse.maven:gregtech-food-option-477021:6472136"
-    //implementation "curse.maven:totemic-237541:4111310"
+    implementation "curse.maven:patchouli-306770:3162874"
+    implementation name: 'Totemic-1.12.2-0.11.6'
 }

@@ -4,6 +4,8 @@ import com.mjr.extraplanets.blocks.ExtraPlanets_Blocks;
 import com.mjr.extraplanets.blocks.planetAndMoonBlocks.*;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.StoneType;
+import logictechcorp.netherex.block.BlockNetherrack;
+import logictechcorp.netherex.init.NetherExBlocks;
 import micdoodle8.mods.galacticraft.core.GCBlocks;
 import micdoodle8.mods.galacticraft.core.blocks.BlockBasicMoon;
 import micdoodle8.mods.galacticraft.planets.mars.blocks.BlockBasicMars;
@@ -17,20 +19,20 @@ public class GAGStoneTypes {
     private GAGStoneTypes() {}
 
     public static void init() {
-        new StoneType(12, "moonrock", SoundType.STONE, GAGOrePrefix.oreMoonRock, Materials.Copper,
-                () -> GCBlocks.blockMoon.getStateFromMeta(4),
-                state -> state.getBlock() instanceof BlockBasicMoon
-                        && state.equals(GCBlocks.blockMoon.getStateFromMeta(4)), true);
+        new StoneType(12, "fierynetherrack", SoundType.STONE, GAGOrePrefix.oreFieryNetherrack, Materials.Copper,
+                () -> NetherExBlocks.FIERY_NETHERRACK.getDefaultState(),
+                state -> state.getBlock() instanceof BlockNetherrack
+                        && state.equals(NetherExBlocks.FIERY_NETHERRACK.getDefaultState()), true);
 
-        new StoneType(13, "marsrock", SoundType.STONE, GAGOrePrefix.oreMarsRock, Materials.Copper,
-                () -> MarsBlocks.marsBlock.getStateFromMeta(9),
-                state -> state.getBlock() instanceof BlockBasicMars
-                        && state.equals(MarsBlocks.marsBlock.getStateFromMeta(9)), true);
+        new StoneType(13, "livelynetherrack", SoundType.STONE, GAGOrePrefix.oreLivelyNetherrack, Materials.Copper,
+                () -> NetherExBlocks.LIVELY_NETHERRACK.getDefaultState(),
+                state -> state.getBlock() instanceof BlockNetherrack
+                        && state.equals(NetherExBlocks.LIVELY_NETHERRACK.getDefaultState()), true);
 
-        new StoneType(14, "venusrock", SoundType.STONE, GAGOrePrefix.oreVenusRock, Materials.Copper,
-                () -> VenusBlocks.venusBlock.getStateFromMeta(1),
-                state -> state.getBlock() instanceof BlockBasicVenus
-                        && state.equals(VenusBlocks.venusBlock.getStateFromMeta(1)), true);
+        new StoneType(14, "gloomynetherrack", SoundType.STONE, GAGOrePrefix.oreGloomyNetherrack, Materials.Copper,
+                () -> NetherExBlocks.GLOOMY_NETHERRACK.getDefaultState(),
+                state -> state.getBlock() instanceof BlockNetherrack
+                        && state.equals(NetherExBlocks.GLOOMY_NETHERRACK.getDefaultState()), true);
 
         new StoneType(15, "mercuryrock", SoundType.STONE, GAGOrePrefix.oreMercuryRock, Materials.Copper,
                 () -> ExtraPlanets_Blocks.MERCURY_BLOCKS.getStateFromMeta(2),
@@ -95,5 +97,40 @@ public class GAGStoneTypes {
         new StoneType(30, "iapetusrock", SoundType.STONE, GAGOrePrefix.oreIapetusRock, Materials.Copper,
                 () -> ExtraPlanets_Blocks.IAPETUS_BLOCKS.getStateFromMeta(2),
                 state -> state.getBlock() instanceof BlockBasicIapetus, true);
+
+        new StoneType(31, "moonrock", SoundType.STONE, GAGOrePrefix.oreMoonRock, Materials.Copper,
+                () -> GCBlocks.blockMoon.getStateFromMeta(4),
+                state -> state.getBlock() instanceof BlockBasicMoon
+                        && state.equals(GCBlocks.blockMoon.getStateFromMeta(4)), true);
+
+        new StoneType(32, "marsrock", SoundType.STONE, GAGOrePrefix.oreMarsRock, Materials.Copper,
+                () -> MarsBlocks.marsBlock.getStateFromMeta(9),
+                state -> state.getBlock() instanceof BlockBasicMars
+                        && state.equals(MarsBlocks.marsBlock.getStateFromMeta(9)), true);
+
+        new StoneType(33, "venusrock", SoundType.STONE, GAGOrePrefix.oreVenusRock, Materials.Copper,
+                () -> VenusBlocks.venusBlock.getStateFromMeta(1),
+                state -> state.getBlock() instanceof BlockBasicVenus
+                        && state.equals(VenusBlocks.venusBlock.getStateFromMeta(1)), true);
+
+        new StoneType(34, "phobosrock", SoundType.STONE, GAGOrePrefix.orePhobosRock, Materials.Copper,
+                () -> ExtraPlanets_Blocks.PHOBOS_BLOCKS.getStateFromMeta(2),
+                state -> state.getBlock() instanceof BlockBasicPhobos, true);
+
+        new StoneType(35, "deimosrock", SoundType.STONE, GAGOrePrefix.oreDeimosRock, Materials.Copper,
+                () -> ExtraPlanets_Blocks.DEIMOS_BLOCKS.getStateFromMeta(2),
+                state -> state.getBlock() instanceof BlockBasicDeimos, true);
+
+        new StoneType(36, "tritonrock", SoundType.STONE, GAGOrePrefix.oreTritonRock, Materials.Copper,
+                () -> ExtraPlanets_Blocks.TRITON_BLOCKS.getStateFromMeta(2),
+                state -> state.getBlock() instanceof BlockBasicTriton, true);
+
+        new StoneType(37, "oberonrock", SoundType.STONE, GAGOrePrefix.oreOberonRock, Materials.Copper,
+                () -> ExtraPlanets_Blocks.OBERON_BLOCKS.getStateFromMeta(2),
+                state -> state.getBlock() instanceof BlockBasicOberon, true);
+
+        new StoneType(38, "titanarock", SoundType.STONE, GAGOrePrefix.oreTitaniaRock, Materials.Copper,
+                () -> ExtraPlanets_Blocks.TITANIA_BLOCKS.getStateFromMeta(2),
+                state -> state.getBlock() instanceof BlockBasicTitania, true);
     }
 }

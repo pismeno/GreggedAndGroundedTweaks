@@ -29,7 +29,8 @@
     "MixinBloodUnification",
     "MixinRemoveGlassFromSmeltery",
     "MixinBloodUnification",
-    "MixinSatelliteRecipes"
+    "MixinSatelliteRecipes",
+    "MixinOreProcessing"
   ],
   "client": [],
   "server": []

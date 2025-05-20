@@ -2,6 +2,7 @@ package pismeno.gagtweaks.gregtech;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.util.ResourceLocation;
@@ -518,6 +519,7 @@ public class GAGMaterials {
                 .color(0xC0C0C0).iconSet(METALLIC)
                 .flags(DECOMPOSITION_BY_ELECTROLYZING, DECOMPOSITION_BY_CENTRIFUGING)
                 .addOreByproducts(Cobalt)
+                .oreSmeltInto(Iron)
                 .components(Iron, 9, Nickel, 1)
                 .build();
 
@@ -587,7 +589,7 @@ public class GAGMaterials {
                 .gem()
                 .ore()
                 .color(0x0778F2).iconSet(DIAMOND)
-                .flags(NO_SMELTING, GENERATE_CHIPS)
+                .flags(NO_SMELTING, GENERATE_CHIPS, GENERATE_PLATE)
                 .build();
 
         AAMaterials.addAll(Arrays.asList(Restonia, Palis, Diamatine, Void, Emeradic, Enori));
@@ -603,7 +605,7 @@ public class GAGMaterials {
         ignoredItems.put(Fluix, new OrePrefix[]{block});
         ignoredItems.put(Lunarite, new OrePrefix[]{gem});
         ignoredItems.put(MeteoricIron, new OrePrefix[]{ingot, block});
-        //ignoredItems.put(Electrotine, new OrePrefix[]{dust, ingot});
+        ignoredItems.put(Electrotine, new OrePrefix[]{dust, ingot});
 
         for (Map.Entry<Material, OrePrefix[]> entry : ignoredItems.entrySet()) {
             Material material = entry.getKey();

@@ -19,8 +19,8 @@ import pismeno.gagtweaks.common.GAGBlocks;
 import pismeno.gagtweaks.common.GAGItems;
 import pismeno.gagtweaks.common.recipes.AtmosphereRecipes;
 import pismeno.gagtweaks.common.recipes.CraftingRecipes;
-import pismeno.gagtweaks.common.recipes.MetaItemHandler;
 import pismeno.gagtweaks.common.recipes.MachineRecipes;
+import pismeno.gagtweaks.common.recipes.ProcessingHandlers;
 import pismeno.gagtweaks.galacticraft.TradeListEditor;
 import pismeno.gagtweaks.galacticraft.WorkbenchRecipes;
 import pismeno.gagtweaks.general.OreDict;
@@ -67,7 +67,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void onRecipeRegistration(RegistryEvent.Register<IRecipe> event) {
-        MetaItemHandler.init();
+        ProcessingHandlers.init();
         AtmosphereRecipes.init();
     }
 

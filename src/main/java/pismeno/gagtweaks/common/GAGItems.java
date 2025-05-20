@@ -70,6 +70,8 @@ public class GAGItems {
     public static Item EXPERT_CHIPSET;
     public static Item ELITE_CHIPSET;
     public static Item CRYSTAL_CHIPSET;
+    public static Item GREAT_CHIPSET;
+    public static Item BEST_CHIPSET;
 
     public static Item ENGRAVED_CRYSTAL_CHIPSET;
 
@@ -136,6 +138,8 @@ public class GAGItems {
         EXPERT_CHIPSET = new ItemGeneric("expert_chipset");
         ELITE_CHIPSET = new ItemGeneric("elite_chipset");
         CRYSTAL_CHIPSET = new ItemGeneric("crystal_chipset");
+        GREAT_CHIPSET = new ItemGeneric("great_chipset");
+        BEST_CHIPSET = new ItemGeneric("best_chipset");
 
         ENGRAVED_CRYSTAL_CHIPSET = new ItemGeneric("engraved_crystal_chipset");
 

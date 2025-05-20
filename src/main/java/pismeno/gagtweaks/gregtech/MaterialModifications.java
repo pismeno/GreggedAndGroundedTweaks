@@ -62,6 +62,7 @@ public class MaterialModifications {
         Platinum.addFlags(MaterialFlags.GENERATE_DENSE);
         Tungsten.addFlags(MaterialFlags.GENERATE_DENSE);
         Zinc.addFlags(MaterialFlags.GENERATE_DENSE);
+        Tritanium.addFlags(MaterialFlags.GENERATE_DENSE);
 
         GagTweaks.LOGGER.info("Material modifications initialized");
     }

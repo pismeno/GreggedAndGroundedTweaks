@@ -24,7 +24,8 @@ import pismeno.gagtweaks.galacticraft.DungeonLoot;
                         "required-after:extraplanets;" +
                         "required-after:betterwithmods;" +
                         "required-after:actuallyadditions;" +
-                        "required-after:gregtechfoodoption"
+                        "required-after:gregtechfoodoption;" +
+                        "required:netherex"
 )
 public class GagTweaks {
 

@@ -53,4 +53,11 @@ dependencies {
     implementation "curse.maven:gregtech-food-option-477021:6472136"
     implementation "curse.maven:patchouli-306770:3162874"
     implementation name: 'Totemic-1.12.2-0.11.6'
+    implementation name: 'Avaritia-1.12.2-3.3.0.37-universal'
+    implementation name: 'LibraryEx-1.12.2-1.2.2'
+    implementation name: 'NetherEx-1.12.2-2.2.5'
+    implementation group: 'com.electronwill.night-config', name: 'core', version: '3.6.6'
+    implementation group: 'com.electronwill.night-config', name: 'toml', version: '3.6.6'
+    implementation group: 'com.electronwill.night-config', name: 'json', version: '3.6.6'
+
 }

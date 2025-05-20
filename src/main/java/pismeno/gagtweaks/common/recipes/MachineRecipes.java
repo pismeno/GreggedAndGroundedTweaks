@@ -19,11 +19,15 @@ import gregtech.api.unification.material.MarkerMaterials.Color;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.blocks.BlockHermeticCasing;
 import gregtech.common.blocks.MetaBlocks;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
+import morph.avaritia.init.ModBlocks;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import pismeno.gagtweaks.gregtech.GAGMaterials;
 import pismeno.gagtweaks.gregtech.GAGOrePrefix;
 import pokefenn.totemic.entity.animal.EntityBuffalo;
 
@@ -191,6 +195,12 @@ public class MachineRecipes {
                 .output(ExtraPlanets_Items.TIER_9_ITEMS, 1, 3)
                 .buildAndRegister();
 
+        COMPRESSOR_RECIPES.recipeBuilder()
+                .EUt(VA[UV]).duration(2400)
+                .input(ExtraPlanets_Items.TIER_9_ITEMS, 4, 3)
+                .output(ExtraPlanets_Items.TIER_10_ITEMS, 1, 3)
+                .buildAndRegister();
+
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .EUt(40000).duration(100)
@@ -283,6 +293,26 @@ public class MachineRecipes {
                 .outputs(getItemStack("appliedenergistics2:material", 17, 1))
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(Blocks.CRAFTING_TABLE)
+                .input(MetaBlocks.HERMETIC_CASING.getItemVariant(BlockHermeticCasing.HermeticCasingsType.HERMETIC_UV).getItem())
+                .input(gear, Tritanium, 4)
+                .input(GRAVI_STAR)
+                .input(ROBOT_ARM_UV, 8)
+                .input(CONVEYOR_MODULE_UV, 8)
+                .input(ELECTRIC_PISTON_UV, 4)
+                .input(FIELD_GENERATOR_ZPM)
+                .input(plate, Tiamant, 24)
+                .input(plate, Americium, 8)
+                .fluidInputs(Europium.getFluid(144))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 8))
+                .output(ModBlocks.extremeCraftingTable)
+                .stationResearch(b -> b
+                        .researchStack(new ItemStack(Blocks.CRAFTING_TABLE))
+                        .CWUt(96)
+                        .EUt(VA[UV]))
+                .EUt(VA[UV]).duration(4500).buildAndRegister();
     }
 
     public static void registerCircuits() {
@@ -635,6 +665,81 @@ public class MachineRecipes {
                         .CWUt(16))
                 .buildAndRegister();
 
+        //CRYSTAL SUPERCOMPUTER
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(9600).duration(400)
+                .input(ELITE_CIRCUIT_BOARD)
+                .input(CRYSTAL_ASSEMBLY_LUV, 2)
+                .input(RANDOM_ACCESS_MEMORY, 4)
+                .input(NOR_MEMORY_CHIP, 32)
+                .input(NAND_MEMORY_CHIP, 64)
+                .input(EXPERT_CHIPSET)
+                .solderMultiplier(2)
+                .output(CRYSTAL_COMPUTER_ZPM)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //WETWARE PROCESSOR
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(38400).duration(200)
+                .input(NEURO_PROCESSOR)
+                .input(ENGRAVED_CRYSTAL_CHIPSET)
+                .input(EXPERT_CHIPSET)
+                .input(NANO_CENTRAL_PROCESSING_UNIT)
+                .input(ADVANCED_SMD_CAPACITOR, 8)
+                .input(ADVANCED_SMD_TRANSISTOR, 8)
+                .output(WETWARE_PROCESSOR_LUV, 2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(150000).duration(100)
+                .input(NEURO_PROCESSOR)
+                .input(HIGHLY_ADVANCED_SOC)
+                .input(EXPERT_CHIPSET)
+                .input(bolt, Naquadah, 8)
+                .output(WETWARE_PROCESSOR_LUV, 4)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //WETWARE SUPERCOMPUTER
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(38400).duration(400)
+                .input(WETWARE_CIRCUIT_BOARD)
+                .input(WETWARE_PROCESSOR_ASSEMBLY_ZPM, 2)
+                .input(ADVANCED_SMD_DIODE, 8)
+                .input(NOR_MEMORY_CHIP, 16)
+                .input(RANDOM_ACCESS_MEMORY, 32)
+                .input(wireFine, YttriumBariumCuprate, 24)
+                .input(foil, Polybenzimidazole, 32)
+                .input(plate, Europium, 4)
+                .input(GREAT_CHIPSET, 4)
+                .fluidInputs(SolderingAlloy.getFluid(1152))
+                .output(WETWARE_SUPER_COMPUTER_UV)
+                .stationResearch(b -> b
+                        .researchStack(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm())
+                        .CWUt(16))
+                .buildAndRegister();
+
+        //WETWARE MAINFRAME
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Tritanium, 2)
+                .input(WETWARE_SUPER_COMPUTER_UV, 2)
+                .input(ADVANCED_SMD_DIODE, 32)
+                .input(ADVANCED_SMD_CAPACITOR, 32)
+                .input(ADVANCED_SMD_TRANSISTOR, 32)
+                .input(ADVANCED_SMD_RESISTOR, 32)
+                .input(ADVANCED_SMD_INDUCTOR, 32)
+                .input(foil, Polybenzimidazole, 64)
+                .input(RANDOM_ACCESS_MEMORY, 32)
+                .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 16)
+                .input(plate, Europium, 8)
+                .input(BEST_CHIPSET, 8)
+                .fluidInputs(SolderingAlloy.getFluid(L * 20))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 8))
+                .output(WETWARE_MAINFRAME_UHV)
+                .stationResearch(b -> b
+                        .researchStack(WETWARE_SUPER_COMPUTER_UV.getStackForm())
+                        .CWUt(96)
+                        .EUt(VA[UV]))
+                .EUt(300000).duration(2000).buildAndRegister();
+
         //DATA MODULE
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(WETWARE_CIRCUIT_BOARD)
@@ -789,22 +894,44 @@ public class MachineRecipes {
                 .duration(300).EUt(VA[EV])
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipEngraved, QuartzBlack)
+                .input(OrePrefix.wireFine, EnrichedNaquadahTriniumEuropiumDuranide, 12)
+                .notConsumable(OrePrefix.lens, Emeradic)
+                .notConsumable(OrePrefix.lens, Void)
+                .output(GREAT_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        LASER_FABRICATOR_RECIPES.recipeBuilder()
+                .input(GAGOrePrefix.chipEngraved, Tiamant)
+                .input(OrePrefix.wireFine, EnrichedNaquadahTriniumEuropiumDuranide, 12)
+                .notConsumable(OrePrefix.lens, Emeradic)
+                .notConsumable(OrePrefix.lens, Diamatine)
+                .output(BEST_CHIPSET)
+                .duration(300).EUt(VA[EV])
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
     }
 
     public static void registerChipsRecipes() {
-        addRawChipRecipe(Materials.Amethyst, 0, 350);
-        addRawChipRecipe(Enori, 0, 350);
-        addRawChipRecipe(Materials.GarnetYellow, 0, 350);
-        addRawChipRecipe(Materials.Diamond, 0, 350);
-        addRawChipRecipe(Restonia, 1, 350);
-        addRawChipRecipe(Void, 1, 350);
-        addRawChipRecipe(Restonia, 1, 480);
-        addRawChipRecipe(Palis, 1, 1200);
-        addRawChipRecipe(Peccorite, 1, 1200);
-        addRawChipRecipe(Diamatine, 1, 6000);
-        addRawChipRecipe(Emeradic, 2, 10000);
-        addRawChipRecipe(Nitanite, 2, 10000);
-        addRawChipRecipe(Materials.Olivine, 2, 10000);
+        addRawChipRecipe(Amethyst, 0, VH[HV]);
+        addRawChipRecipe(Enori, 0, VH[HV]);
+        addRawChipRecipe(GarnetYellow, 0, VH[HV]);
+        addRawChipRecipe(Diamond, 0, VH[HV]);
+        addRawChipRecipe(Restonia, 1, VH[HV]);
+        addRawChipRecipe(Void, 1, VH[HV]);
+        addRawChipRecipe(Restonia, 1, VH[HV]);
+        addRawChipRecipe(Palis, 1, VH[EV]);
+        addRawChipRecipe(Peccorite, 1, VH[EV]);
+        addRawChipRecipe(Diamatine, 1, VH[IV]);
+        addRawChipRecipe(Emeradic, 2, VA[LuV]);
+        addRawChipRecipe(Nitanite, 2, VA[LuV]);
+        addRawChipRecipe(Olivine, 2, VA[LuV]);
+        addRawChipRecipe(QuartzBlack, 2, VA[ZPM]);
+        addRawChipRecipe(Tiamant, 2, VH[UV]);
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(OrePrefix.gem, Materials.Lapotron)

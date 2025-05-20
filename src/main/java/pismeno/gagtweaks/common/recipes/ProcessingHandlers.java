@@ -7,19 +7,25 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlags;
 
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.loaders.recipe.handlers.OreRecipeHandler;
 import net.minecraftforge.fluids.FluidStack;
 import pismeno.gagtweaks.gregtech.GAGMaterialFlags;
 import pismeno.gagtweaks.gregtech.GAGOrePrefix;
 
 
-public class MetaItemHandler {
+public class ProcessingHandlers {
 
-    private MetaItemHandler() {}
+    private ProcessingHandlers() {}
 
     public static void init() {
-        OrePrefix.plate.addProcessingHandler(MetaItemHandler::process);
+        OrePrefix.plate.addProcessingHandler(ProcessingHandlers::process);
+
+        for (OrePrefix prefix : GAGOrePrefix.ORE_PREFIXES) {
+            prefix.addProcessingHandler(PropertyKey.ORE, OreRecipeHandler::processOre);
+        }
     }
 
     private static void process(OrePrefix prefix, Material material) {

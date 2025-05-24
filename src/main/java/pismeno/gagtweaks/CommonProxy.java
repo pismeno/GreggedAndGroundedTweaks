@@ -38,7 +38,7 @@ public class CommonProxy {
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.gagtweaks.late.json");
         GAGTcMaterials.preInit();
-        GAGBlocks.init();
+        GAGBlocks.preInit();
         GAGItems.init();
         TradeListEditor.init();
         RemoveMelting.init();
@@ -47,6 +47,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         GAGTcMaterials.init();
         MetaTileEntities.init();
+        GAGBlocks.init();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

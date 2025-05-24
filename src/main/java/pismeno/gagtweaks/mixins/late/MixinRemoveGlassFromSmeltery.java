@@ -139,7 +139,7 @@ public class MixinRemoveGlassFromSmeltery {
                 new FluidStack(TinkerFluids.searedStone, Material.VALUE_SearedMaterial * 4),
                 true, true));
 
-        // basically a pseudo-oredict of the seared blocks to support wildcard value
+        // basically a pseudo-oredict of the seared models to support wildcard value
         TinkerRegistry.registerMelting(searedBlock, TinkerFluids.searedStone, Material.VALUE_SearedBlock);
         TinkerRegistry.registerMelting(TinkerCommons.searedBrick, TinkerFluids.searedStone, Material.VALUE_SearedMaterial);
         TinkerRegistry.registerMelting(MeltingRecipe.forAmount(RecipeMatch.of(TinkerCommons.grout, Material.VALUE_SearedMaterial), TinkerFluids.searedStone, Material.VALUE_SearedMaterial / 3));

@@ -19,7 +19,7 @@ public interface IToolCrowbar {
     String ORE_TAG = "toolCrowbar";
 
     /**
-     * Controls non-rotational interactions with blocks. Crowbar specific stuff.
+     * Controls non-rotational interactions with models. Crowbar specific stuff.
      * <p/>
      * Rotational interaction is handled by the Block.rotateBlock() function,
      * which should be called from the Item.onUseFirst() function of your tool.

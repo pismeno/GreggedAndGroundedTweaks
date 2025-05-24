@@ -296,7 +296,7 @@ public class MachineRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(Blocks.CRAFTING_TABLE)
-                .input(MetaBlocks.HERMETIC_CASING.getItemVariant(BlockHermeticCasing.HermeticCasingsType.HERMETIC_UV).getItem())
+                .inputs(MetaBlocks.HERMETIC_CASING.getItemVariant(BlockHermeticCasing.HermeticCasingsType.HERMETIC_UV))
                 .input(gear, Tritanium, 4)
                 .input(GRAVI_STAR)
                 .input(ROBOT_ARM_UV, 8)
@@ -696,6 +696,19 @@ public class MachineRecipes {
                 .input(EXPERT_CHIPSET)
                 .input(bolt, Naquadah, 8)
                 .output(WETWARE_PROCESSOR_LUV, 4)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //WETWARE PROCESSOR ASSEMBLY
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(38400).duration(400)
+                .input(WETWARE_CIRCUIT_BOARD)
+                .input(WETWARE_PROCESSOR_LUV, 2)
+                .input(ADVANCED_SMD_INDUCTOR, 6)
+                .input(ADVANCED_SMD_CAPACITOR, 12)
+                .input(RANDOM_ACCESS_MEMORY, 24)
+                .input(ELITE_CHIPSET)
+                .solderMultiplier(2)
+                .output(WETWARE_PROCESSOR_ASSEMBLY_ZPM)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
